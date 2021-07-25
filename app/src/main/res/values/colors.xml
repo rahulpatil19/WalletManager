@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="background_blue">#1F1E30</color>
+
+  <!--  <color name="blue_20">#2C5AC2</color>
+    <color name="blue_30">#305EC7</color>
+    <color name="blue_40">#4C78DB</color>-->
+
+    <color name="primary">#5F238E</color>
+    <color name="green">#2DC858</color>
+    <color name="yellow_one">#FFD343</color>
+    <color name="yellow_two">#FFBF00</color>
+    <color name="primary_variant">#341D3E</color>
+    <color name="primary_light">#AB94C4</color>
+    <color name="gray_one">#EEEAF4</color>
+    <color name="gray_two">#F6F3F9</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <color name="blue_dark">#272535</color>
+    <color name="gray_dark">#73717D</color>
+
+
+    <color name="green_1">#1DAC4C</color>
+    <color name="green_2">#249A4B</color>
+    <color name="green_3">#2A8F4C</color>
+
+    <color name="red_1">#CD1A26</color>
+    <color name="red_2">#C12731</color>
+    <color name="red_3">#A82C34</color>
+
+    <color name="et_background">#F4F4F4</color>
+    <color name="gray_light">#fefefe</color>
+    <color name="gray_medium">#ECECEC</color>
+
+    <color name="surface_color">#FAF9F9</color>
+
+    <!-- 
+    #305EC7
+#4C78DB
+#2C5AC2
+#3663CD
+#1F1E30
+#272535
+#73717D
+#2A984E
+#9A393F
+#2055CA
+
+new colors - 
+
+#5F238E
+#2DC858
+#FFD343
+#FFBF00
+#341D3E
+#AB94C4
+#EEEAF4
+#F6F3F9
+    -->
+
+</resources>

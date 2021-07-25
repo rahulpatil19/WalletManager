@@ -1,0 +1,101 @@
+
+1. Home
+Currency can be selected from create option and save in shared preference
+
+Create transaction - Income and Expense
+Income - id, category, title(optional), amount, date, type("income"), categoryIcon, year(int), month(int)
+Expense - id, category, title(optional), amount, date, type("expense"), categoryIcon, year(int), month(int)
+AllTransaction - id, category, title(optional), amount, date, type("expense"), categoryIcon, year(int), month(int)
+
+Total Amount - sum up amount from AllTransaction
+
+Total income - from income
+Total expense - from expense
+
+Recent transactions - show upto 10 transactions from all transaction table (Edit option)
+
+See all - Show all transaction from all_transaction_table(Edit and Delete option)
+Filter - By year, Month, Type(Income or expense)
+
+2. History - Income And expense transaction tab - by month and year(header)
+
+3. Wallet - Transactions by categories, Percentage graph of income and expense categories etc.
+
+4. Settings - Notifications, Change Currency, Language, Privacy, About us, Logout
+
+New Wallet idea ->
+- Top - Title - wallet
+Show all or choose month and date
+- Date - Month(Dropdown) and year(Type) -default Recent
+- Graph - Income vs expense (Total amount and difference)
+=Tab income and expense -
+- List - Categories with number of transactions(Clickable)- onClick - Show all transaction under that category
+with delete and edit.
+
+My Profile - Java and Kotlin with Android - Knowledge is good, theory needs some reading, example are in mind
+
+2017 April - Started android, built and released some apps on Google Play store,
+2018 July, 10 - Hired on first interview at Clarigo Infotech
+2020 Feb, 16 - Resigned from Clarigo Infotech
+2020 April, 06 - Last working day in Clarigo Infotech
+
+Total Experience working with Android - 3 years +
+Proffesional Experience - 1 year 9 month
+
+Gap - 1 year 4 month
+Started working on kotlin after resigning
+Took 2 months to learn and then started working on private projects
++ MVVM architecture + Jetpack components such as Room, LiveData, ViewModel, Navigation, Paging, WorkManager.
+
+Made some practise projects with Jetpack Components.
+
+Assume -
+2020 May - Started Learning kotlin
+2020 Projects done - SanitizeAll, Raas(Reminder) 2 Java projects
+2021 - Kotlin - Wallet Manager
+
+Updated own projects - timeline should be march 2021 - Cinebox and One direction
+
+Current date - 2021, july 21
+
+1 year 9 month professional experience
+1 year Freelancing Starting from June to march. Projects Sanitize all, Raas, Cinebox, Wallet Manager.
+
+Options for Resume -
+1. Mention Freelancing projects on resume and timeline
+- apply with above resume at good company and see if it works
+
+2. Don't Mention freelancing time on Resume
+- apply with default resume and during call tell them you were doing
+ Freelancing, Working on kotlin projects with Android jetpack components.
+
+ - Can also mention link to your projects on play store during freelancing
+
+Salary - 17, 500 during resigning
+Expected salary - 30k if under 1.6 year gap.
+
+If leave the company after 1 year - Experience - 1.9 year - 17, 500 + 1 year - 25k
+
+After 3 year - salary 25 k min salary , on one increment - 30 k after 3 year
+
+next expected salary - 45 k - experience 3 year
+
+After 3 year
+
+Priority - Wallet manager, Update Cinebox and One direction
+Upgrade SSD
+
+Other things can be done during extra time and that will be Good for mind like growing tree, playing game,
+running, talking to people watching Web series during night etc.
+
+Don't compare with others - your age, earning and your talent
+Improve your knowledge everyday on Android and kotlin.
+
+Can earn from own app(later) can have product setup while working on job.
+
+30 july - complete Wallet manager , update resume, setup room for interview
+Feelings - Try to control them, think about living life in different cities plus weekends, football, after year
+good earning and can apply abroad. Things are not good here as anyway. Habit of working can be improved like before
+and think less and try to make friends other than office life.
+
+On Android Rxjava and dagger in important - do it someday.

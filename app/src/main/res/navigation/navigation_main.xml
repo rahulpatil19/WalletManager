@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.walletmanager.app.screens.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_chooseTransactionSheetFragment"
+            app:destination="@id/chooseTransactionSheetFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_allTransactionFragment"
+            app:destination="@id/allTransactionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_walletFragment"
+            app:destination="@id/walletFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticFragment"
+            app:destination="@id/statisticFragment" />
+    </fragment>
+
+    <activity
+        android:id="@+id/transactionActivity"
+        android:name="com.walletmanager.app.screens.create.AddTransactionActivity"
+        android:label="activity_transaction"
+        tools:layout="@layout/activity_add_transaction">
+        <argument
+            android:name="transactionType"
+            app:argType="string"
+            android:defaultValue="expense" />
+    </activity>
+    <dialog
+        android:id="@+id/chooseTransactionSheetFragment"
+        android:name="com.walletmanager.app.screens.home.ChooseTransactionSheetFragment"
+        android:label="ChooseTransactionSheetFragment" >
+        <action
+            android:id="@+id/action_chooseTransactionSheetFragment_to_transactionActivity"
+            app:destination="@id/transactionActivity"
+            app:popUpTo="@id/homeFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/allTransactionFragment"
+        android:name="com.walletmanager.app.screens.transactions.TransactionFragment"
+        android:label="AllTransactionFragment" >
+        <action
+            android:id="@+id/action_allTransactionFragment_to_monthDataFragment"
+            app:destination="@id/monthDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.walletmanager.app.screens.wallet.WalletFragment"
+        android:label="WalletFragment" />
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.walletmanager.app.screens.statistic.StatisticFragment"
+        android:label="StatisticFragment" />
+    <fragment
+        android:id="@+id/monthDataFragment"
+        android:name="com.walletmanager.app.screens.monthlydata.MonthDataFragment"
+        android:label="MonthDataFragment" />
+
+</navigation>
