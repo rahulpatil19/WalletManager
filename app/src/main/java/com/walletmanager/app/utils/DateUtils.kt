@@ -10,7 +10,7 @@ fun getCurrentDate(): String {
 }
 
 fun formatDate(date: Date): String{
-    val dateFormat = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
+    val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
     return dateFormat.format(date)
 }
 

@@ -7,6 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home"
         android:name="com.walletmanager.app.screens.home.HomeFragment"
         android:label="HomeFragment">
         <action
@@ -44,16 +45,22 @@
     </dialog>
     <fragment
         android:id="@+id/allTransactionFragment"
+        tools:layout="@layout/fragment_all_transaction"
         android:name="com.walletmanager.app.screens.transactions.TransactionFragment"
         android:label="AllTransactionFragment" >
         <action
             android:id="@+id/action_allTransactionFragment_to_monthDataFragment"
             app:destination="@id/monthDataFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
         android:name="com.walletmanager.app.screens.wallet.WalletFragment"
-        android:label="WalletFragment" />
+        android:label="WalletFragment" >
+        <action
+            android:id="@+id/action_walletFragment_to_walletFilterSheetFragment"
+            app:destination="@id/walletFilterSheetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statisticFragment"
         android:name="com.walletmanager.app.screens.statistic.StatisticFragment"
@@ -62,5 +69,6 @@
         android:id="@+id/monthDataFragment"
         android:name="com.walletmanager.app.screens.monthlydata.MonthDataFragment"
         android:label="MonthDataFragment" />
+
 
 </navigation>

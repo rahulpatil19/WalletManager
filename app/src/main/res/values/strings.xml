@@ -31,6 +31,12 @@
     <string name="title_history">History</string>
     <string name="info_version">Version 1.0.0</string>
     <string name="title_statistic">Statistics</string>
+    <string name="title_edit_transaction">Edit Transaction</string>
+    <string name="title_edit_expense">Edit Expense</string>
+    <string name="button_update_transaction">Update Transaction</string>
+    <string name="menu_filter">Filter</string>
+
+    <string name="format_total_transactions">"%1$d transactions"</string>
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->
 

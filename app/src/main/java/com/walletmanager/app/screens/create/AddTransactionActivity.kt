@@ -1,18 +1,22 @@
 package com.walletmanager.app.screens.create
 
+import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.app.NotificationCompat.getColor
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.walletmanager.app.R
 import com.walletmanager.app.database.WalletDatabase
-import com.walletmanager.app.database.entities.DbExpense
-import com.walletmanager.app.database.entities.DbIncome
-import com.walletmanager.app.database.entities.DbTransaction
+import com.walletmanager.app.database.entities.*
 import com.walletmanager.app.databinding.ActivityAddTransactionBinding
 import com.walletmanager.app.domain.Category
 import com.walletmanager.app.utils.getCurrentDate
@@ -34,7 +38,7 @@ class AddTransactionActivity : AppCompatActivity(),
 
     private lateinit var walletDatabase: WalletDatabase
 
-    private var transactionCategory: Category = Category(1, "Other", R.drawable.ic_other)
+    private lateinit var transactionCategory: Category
 
     private lateinit var selectedDate: Date
     private lateinit var selectedMonth: String
@@ -55,6 +59,7 @@ class AddTransactionActivity : AppCompatActivity(),
             val date = getCurrentDate()
             binding.tvDate.text = date
 
+
             setupClickListeners()
 
             if (transactionType == "income") {
@@ -67,8 +72,20 @@ class AddTransactionActivity : AppCompatActivity(),
 
     private fun initExpenseData() {
         binding.toolbar.title = resources.getString(R.string.title_add_expense)
+
+        transactionCategory =
+            Category("Travel", R.drawable.ic_category_travel, R.color.yellow_green)
+        // default category setup
+        binding.tvCategory.text = transactionCategory.name
+        binding.ivCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
+            transactionCategory.iconId,
+            resources.newTheme()))
+        binding.ivCategory.drawable.setTint(ResourcesCompat.getColor(resources,
+            transactionCategory.colorId,
+            resources.newTheme()))
+
         val addExpenseViewModelFactory =
-            AddExpenseViewModelFactory(walletDatabase.expenseDao,
+            AddExpenseViewModelFactory(walletDatabase.yearDao,
                 walletDatabase.transactionDao,
                 application)
         addExpenseViewModel = ViewModelProvider(this, addExpenseViewModelFactory).get(
@@ -86,7 +103,23 @@ class AddTransactionActivity : AppCompatActivity(),
 
     private fun initIncomeData() {
         binding.toolbar.title = resources.getString(R.string.title_add_income)
-        addIncomeViewModelFactory = AddIncomeViewModelFactory(walletDatabase.incomeDao,
+
+        transactionCategory = Category("Salary", R.drawable.ic_category_money_bag, R.color.green)
+
+        // default category setup
+        binding.tvCategory.text = transactionCategory.name
+        binding.ivCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
+            transactionCategory.iconId,
+            resources.newTheme()))
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            binding.ivCategory.drawable.setTint(resources.getColor(transactionCategory.colorId,
+                theme))
+        }
+
+        Log.d("Category data", transactionCategory.toString())
+
+        addIncomeViewModelFactory = AddIncomeViewModelFactory(walletDatabase.yearDao,
             walletDatabase.transactionDao,
             application)
         addIncomeViewModel = ViewModelProvider(this, addIncomeViewModelFactory).get(
@@ -131,15 +164,8 @@ class AddTransactionActivity : AppCompatActivity(),
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.buttonAddAmount.isEnabled = false
 
-                    val dbExpense = DbExpense(category = transactionCategory.name,
-                        amount = amount.toLong(),
-                        title = title,
-                        date = date,
-                        type = type,
-                        month = selectedMonth,
-                        year = selectedYear,
-                        categoryIcon = transactionCategory.icon,
-                        createdDate = createdDate)
+                    val dbYear = DbYear(selectedYear)
+
 
                     val dbTransaction = DbTransaction(category = transactionCategory.name,
                         amount = amount.toLong(),
@@ -148,24 +174,17 @@ class AddTransactionActivity : AppCompatActivity(),
                         type = type,
                         month = selectedMonth,
                         year = selectedYear,
-                        categoryIcon = transactionCategory.icon,
+                        categoryIcon = transactionCategory.iconId,
+                        categoryColor = transactionCategory.colorId,
                         createdDate = createdDate)
 
-                    addExpenseViewModel.addExpenseAmount(dbExpense, dbTransaction)
+                    addExpenseViewModel.addExpenseAmount(dbYear, dbTransaction)
 
                 } else if (transactionType == "income") {
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.buttonAddAmount.isEnabled = false
 
-                    val dbIncome = DbIncome(category = transactionCategory.name,
-                        amount = amount.toLong(),
-                        title = title,
-                        date = date,
-                        type = type,
-                        month = selectedMonth,
-                        year = selectedYear,
-                        categoryIcon = transactionCategory.icon,
-                        createdDate = createdDate)
+                    val dbYear = DbYear(selectedYear)
 
                     val dbTransaction = DbTransaction(category = transactionCategory.name,
                         amount = amount.toLong(),
@@ -174,10 +193,11 @@ class AddTransactionActivity : AppCompatActivity(),
                         type = type,
                         month = selectedMonth,
                         year = selectedYear,
-                        categoryIcon = transactionCategory.icon,
+                        categoryIcon = transactionCategory.iconId,
+                        categoryColor = transactionCategory.colorId,
                         createdDate = createdDate)
 
-                    addIncomeViewModel.addIncomeAmount(dbIncome, dbTransaction)
+                    addIncomeViewModel.addIncomeAmount(dbYear, dbTransaction)
                 }
             }
         }
@@ -202,8 +222,8 @@ class AddTransactionActivity : AppCompatActivity(),
     override fun onCategoryClick(category: Category) {
         transactionCategory = category
         binding.tvCategory.text = category.name
-        binding.imageViewCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
-            category.icon,
+        binding.ivCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
+            category.iconId,
             resources.newTheme()))
         //  Toast.makeText(this, "Category selected is ${category.name}", Toast.LENGTH_SHORT).show()
     }

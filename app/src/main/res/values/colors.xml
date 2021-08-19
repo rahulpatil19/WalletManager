@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <color name="background_blue">#1F1E30</color>
 
   <!--  <color name="blue_20">#2C5AC2</color>
@@ -22,7 +21,6 @@
     <color name="blue_dark">#272535</color>
     <color name="gray_dark">#73717D</color>
 
-
     <color name="green_1">#1DAC4C</color>
     <color name="green_2">#249A4B</color>
     <color name="green_3">#2A8F4C</color>
@@ -37,28 +35,27 @@
 
     <color name="surface_color">#FAF9F9</color>
 
-    <!-- 
-    #305EC7
-#4C78DB
-#2C5AC2
-#3663CD
-#1F1E30
-#272535
-#73717D
-#2A984E
-#9A393F
-#2055CA
+    <!-- CATEGORIES COLOR -->
 
-new colors - 
-
-#5F238E
-#2DC858
-#FFD343
-#FFBF00
-#341D3E
-#AB94C4
-#EEEAF4
-#F6F3F9
-    -->
+    <color name="dark_slate_gray">#2F4F4F</color>
+    <color name="dim_gray">#696969</color>
+    <color name="brown">#A52A2A</color>
+    <color name="saddle_brown">#8B4513</color>
+    <color name="chocolate">#D2691E</color>
+    <color name="olive">#808000</color>
+    <color name="forest_green">#228B22</color>
+    <color name="yellow_green">#9ACD32</color>
+    <color name="dark_cyan">#008B8B</color>
+    <color name="dark_slate_blue">#483D8B</color>
+    <color name="dark_magenta">#800080</color>
+    <color name="rebecca_purple">#663399</color>
+    <color name="orchid">#DA70D6</color>
+    <color name="deep_pink">#FF1493</color>
+    <color name="dark_khaki">#BDB76B</color>
+    <color name="gold">#FFD700</color>
+    <color name="dark_red">#8B0000</color>
+    <color name="dark_orange">#FF8C00</color>
+    <color name="orange_red">#FF4500</color>
+    <color name="midnight_blue">#191970</color>
 
 </resources>

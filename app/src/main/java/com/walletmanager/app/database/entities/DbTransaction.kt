@@ -19,6 +19,7 @@ data class DbTransaction(
     val month: String,
     val year: Int,
     val categoryIcon: Int,
+    val categoryColor: Int,
     val createdDate: Date,
 )
 
@@ -34,6 +35,7 @@ fun List<DbTransaction>.asTransaction(): List<Transaction> {
             month = dbTransaction.month,
             year = dbTransaction.year,
             categoryIcon = dbTransaction.categoryIcon,
+            categoryColor = dbTransaction.categoryColor,
             createdDate = dbTransaction.createdDate)
     }
 }

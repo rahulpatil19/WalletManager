@@ -1,5 +1,6 @@
 package com.walletmanager.app.screens.transactions
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.*
 import com.walletmanager.app.database.dao.TransactionDao
@@ -16,7 +17,7 @@ class AllTransactionViewModel(
     private var _navigateToMonth = MutableLiveData<Boolean>()
 
     val navigateToMonth: LiveData<Boolean>
-    get() = _navigateToMonth
+        get() = _navigateToMonth
 
     val dbTransactionList: LiveData<List<Transaction>> =
         transactionRepository.dbTransactionList.asLiveData()
@@ -31,21 +32,20 @@ class AllTransactionViewModel(
                 when {
                     beforeModel == null -> {
                         afterModel?.let {
-                            val afterData = it as TransactionModel.TransactionData
-                            afterData.apply {
-                                TransactionModel.HeaderData(transaction.month, transaction.year)
-                            }
+                            val afterData = afterModel as TransactionModel.TransactionData
+                            val afterDate = "${afterData.transaction.month}, ${afterData.transaction.year}"
+                            TransactionModel.HeaderData(afterDate)
                         }
                     }
                     afterModel == null -> null
                     else -> {
                         val beforeData = beforeModel as TransactionModel.TransactionData
                         val afterData = afterModel as TransactionModel.TransactionData
-                        val newMonth = afterData.transaction.month
-                        val oldMonth = beforeData.transaction.month
+                        val newMonth = "${afterData.transaction.month}, ${afterData.transaction.year}"
+                        val oldMonth = "${beforeData.transaction.month}, ${beforeData.transaction.year}"
                         when {
                             newMonth != oldMonth -> {
-                                TransactionModel.HeaderData(newMonth, afterData.transaction.year)
+                                TransactionModel.HeaderData(newMonth)
                             }
                             else -> {
                                 null
@@ -60,7 +60,12 @@ class AllTransactionViewModel(
         _navigateToMonth.value = false
     }
 
-    fun navigatedToMonth(){
+    override fun onCleared() {
+        super.onCleared()
+        Log.d("Transaction Viewmodel", "Viewmodel cleared")
+    }
+
+    fun navigatedToMonth() {
 
     }
 }

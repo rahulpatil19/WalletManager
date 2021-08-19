@@ -1,4 +1,7 @@
 
+DbModel
+DbTransaction(id=7, category=Salary, amount=15000, title=Salary, date=Thu Dec 03 13:05:12 GMT+05:30 2020, type=income, month=Dec, year=2020, categoryIcon=2131230873, categoryColor=2131099755, createdDate=Tue Aug 03 13:05:22 GMT+05:30 2021)]
+
 1. Home
 Currency can be selected from create option and save in shared preference
 
@@ -99,3 +102,9 @@ good earning and can apply abroad. Things are not good here as anyway. Habit of 
 and think less and try to make friends other than office life.
 
 On Android Rxjava and dagger in important - do it someday.
+
+Your anti-virus program might be impacting your build performance.
+Android Studio checked the following directories:
+ C:\Users\SCEA\.gradle C:\Users\SCEA\AppData\Local\Android\Sdk
+ C:\Users\SCEA\AndroidStudioProjects\WalletManager
+ C:\Users\SCEA\AppData\Local\Google\AndroidStudio2020.3

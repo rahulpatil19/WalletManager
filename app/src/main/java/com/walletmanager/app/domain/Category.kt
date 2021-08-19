@@ -1,3 +1,3 @@
 package com.walletmanager.app.domain
 
-data class Category(val id: Int, val name: String, val icon: Int)
+data class Category(val name: String, val iconId: Int, val colorId: Int, val type: String = "default")

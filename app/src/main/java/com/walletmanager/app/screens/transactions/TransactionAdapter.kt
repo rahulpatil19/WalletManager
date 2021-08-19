@@ -39,8 +39,8 @@ class AllTransactionAdapter :
     class HeaderViewHolder(val binding: ListItemMonthHeaderBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(month: String, year: Int) {
-            binding.tvHeaderMonth.text = "$month, $year"
+        fun bind(monthWithYear: String) {
+            binding.tvHeaderMonth.text = monthWithYear
         }
 
         companion object {
@@ -71,7 +71,7 @@ class AllTransactionAdapter :
             }
             is HeaderViewHolder -> {
                 val monthItem = getItem(position) as TransactionModel.HeaderData
-                holder.bind(monthItem.month, monthItem.year)
+                holder.bind(monthItem.monthWithYear)
             }
         }
     }
@@ -118,5 +118,5 @@ sealed class TransactionModel {
 
     data class TransactionData(val transaction: DbTransaction) : TransactionModel()
 
-    data class HeaderData(val month: String, val year: Int) : TransactionModel()
+    data class HeaderData(val monthWithYear: String) : TransactionModel()
 }

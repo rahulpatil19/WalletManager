@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tv_title_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Filter By"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_marginStart="16dp"
+            android:id="@+id/tv_filter_option_year"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Year"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_year_selected"
+            android:src="@drawable/ic_arrow_carrot_right"
+            android:layout_width="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_filter_option_year"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/tv_filter_option_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Month"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_filter_option_year" />
+
+        <ImageView
+            android:id="@+id/image_month_selected"
+            android:src="@drawable/ic_arrow_carrot_right"
+            android:layout_width="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_filter_option_month"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/tv_filter_option_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Category"
+            android:textSize="18sp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_filter_option_month" />
+
+        <ImageView
+            android:id="@+id/image_category_selected"
+            android:src="@drawable/ic_arrow_carrot_right"
+            android:layout_width="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_filter_option_category"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:id="@+id/filter_done_btn"
+            android:text="Done"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_filter_option_category"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -18,5 +18,6 @@ data class DbIncome(
     val month: String,
     val year: Int,
     val categoryIcon: Int,
+    val categoryColor: Int,
     val createdDate: Date
 )

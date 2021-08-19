@@ -48,23 +48,33 @@
                         android:gravity="center_vertical"
                         android:text="@string/title_category"
                         android:fontFamily="@font/nunito_semibold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/primary"
                         android:textSize="18sp" />
 
-                    <ImageView
-                        android:id="@+id/image_view_category"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_other" />
+
+                    <RelativeLayout
+                        android:id="@+id/layout_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_category_circle_blank"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:id="@+id/iv_category"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            tools:src="@drawable/ic_apple_fruits" />
+
+                    </RelativeLayout>
 
                     <TextView
+                        android:layout_marginStart="16dp"
                         android:id="@+id/tv_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
-                        android:text="Other"
+                        tools:text="Other"
                         android:textColor="@color/primary_variant"
                         android:textSize="16sp"
                         app:drawableEndCompat="@drawable/ic_arrow_carrot_right" />

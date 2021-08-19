@@ -54,7 +54,7 @@ class HomeFragment: Fragment() {
 
         binding.buttonAddTransaction.setOnClickListener {view->
             val action = HomeFragmentDirections.actionHomeFragmentToChooseTransactionSheetFragment()
-            action?.let {
+            action.let {
                 view.findNavController().navigate(action)
             }
         }

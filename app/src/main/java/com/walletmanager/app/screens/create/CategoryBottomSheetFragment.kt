@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.walletmanager.app.R
-import com.walletmanager.app.adapters.CategoryAdapter
+import com.walletmanager.app.adapters.ChooseCategoryAdapter
 import com.walletmanager.app.domain.Category
 import com.walletmanager.app.utils.CategoryUtils
 
 class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
 
-    private lateinit var categoryAdapter: CategoryAdapter
- //   private var cateGoryClickListener: CateGoryClickListener? = null
+    private lateinit var categoryAdapter: ChooseCategoryAdapter
     private lateinit var transactionType: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +30,7 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.list_category)
 
-        categoryAdapter = CategoryAdapter { category ->
+        categoryAdapter = ChooseCategoryAdapter { category ->
             val cateGoryClickListener = activity as CateGoryClickListener
             cateGoryClickListener.onCategoryClick(category)
             dismiss()
@@ -40,9 +39,9 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
         recyclerView.adapter = categoryAdapter
 
         if (transactionType.equals("income")) {
-            categoryAdapter.categories = CategoryUtils.categroies
+            categoryAdapter.categories = CategoryUtils.incomeCategories
         } else if (transactionType.equals("expense")) {
-            categoryAdapter.categories = CategoryUtils.categroies
+            categoryAdapter.categories = CategoryUtils.expenseCategories
         }
 
         return view

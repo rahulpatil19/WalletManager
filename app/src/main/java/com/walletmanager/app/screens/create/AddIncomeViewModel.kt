@@ -4,13 +4,15 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.walletmanager.app.database.dao.IncomeDao
 import com.walletmanager.app.database.dao.TransactionDao
+import com.walletmanager.app.database.dao.YearDao
 import com.walletmanager.app.database.entities.DbIncome
 import com.walletmanager.app.database.entities.DbTransaction
+import com.walletmanager.app.database.entities.DbYear
 import kotlinx.coroutines.*
 import java.lang.IllegalArgumentException
 
 class AddIncomeViewModel(
-    val incomeDao: IncomeDao,
+    val yearDao: YearDao,
     val transactionDao: TransactionDao,
     application: Application,
 ) : ViewModel() {
@@ -23,9 +25,9 @@ class AddIncomeViewModel(
         _addTransaction.value = false
     }
 
-    fun addIncomeAmount(dbIncome: DbIncome, dbTransaction: DbTransaction) {
+    fun addIncomeAmount(dbYear: DbYear, dbTransaction: DbTransaction) {
         viewModelScope.launch {
-            incomeDao.insertIncome(dbIncome)
+            yearDao.insertYear(dbYear)
             transactionDao.insertTransaction(dbTransaction)
             _addTransaction.value = true
         }
@@ -38,13 +40,13 @@ class AddIncomeViewModel(
 }
 
 class AddIncomeViewModelFactory(
-    val incomeDao: IncomeDao,
+    val yearDao: YearDao,
     private val transactionDao: TransactionDao,
     val application: Application,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(AddIncomeViewModel::class.java)) {
-            return AddIncomeViewModel(incomeDao, transactionDao, application) as T
+            return AddIncomeViewModel(yearDao, transactionDao, application) as T
         }
         throw IllegalArgumentException("No viewmodel found")
     }

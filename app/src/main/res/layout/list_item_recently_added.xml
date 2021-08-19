@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/image_view_category"
-        android:src="@drawable/ic_food"
+        android:src="@drawable/ic_category_food"
         android:layout_width="48dp"
         android:layout_height="48dp"/>
 

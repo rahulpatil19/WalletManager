@@ -33,9 +33,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito_semibold"
                 android:text="Rahul Patil"
                 android:textColor="@color/primary"
-                android:fontFamily="@font/nunito_semibold"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/image_view_profile"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,11 +52,11 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_search"
+                android:src="@android:drawable/ic_menu_search"
                 app:layout_constraintBottom_toBottomOf="@id/image_view_profile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -70,8 +70,7 @@
                 android:gravity="center"
                 android:text="$"
                 android:textColor="@color/background_blue"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_total_amount_value"
                 app:layout_constraintTop_toBottomOf="@id/tv_appname" />
@@ -81,15 +80,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:fontFamily="@font/nunito_extrabold"
                 android:gravity="center"
-                android:text="250.00"
                 android:textColor="@color/background_blue"
                 android:textSize="28sp"
-                android:fontFamily="@font/nunito_bold"
                 app:layout_constraintBottom_toBottomOf="@id/tv_currency"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_appname" />
+                app:layout_constraintTop_toBottomOf="@id/tv_appname"
+                tools:text="00" />
 
             <TextView
                 android:id="@+id/tv_total_transactions_title"
@@ -106,7 +105,7 @@
                 android:id="@+id/card_view_transaction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="16dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -116,79 +115,66 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:orientation="vertical">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="52dp"
-                            android:layout_height="52dp"
-                            android:background="@drawable/bg_gradient_solid_yellow"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_baseline_trending_up_24"
-                            app:tint="@color/white" />
+                        android:orientation="horizontal"
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total Income"
+                                android:text="Net Income"
                                 android:textSize="14sp" />
 
-                            <TextView
-                                android:id="@+id/tv_total_income_value"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:text="$34092342.90"
-                                android:textColor="@color/background_blue"
-                                android:textSize="20sp"
-                                android:fontFamily="@font/nunito_semibold" />
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="$"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_income_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:fontFamily="@font/nunito_semibold"
+                                    android:text="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="Last Modified - 02/May/2012"
+                                android:text="Last Added - 02 May, 2012"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
 
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_margin="20dp"
-                        android:background="@color/gray_dark" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="52dp"
-                            android:layout_height="52dp"
-                            android:background="@drawable/bg_gradient_solid_red"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_baseline_trending_down_24"
-                            app:tint="@color/white" />
-
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
+                            android:layout_marginStart="12dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -198,39 +184,54 @@
                                 android:text="Total Expense"
                                 android:textSize="14sp" />
 
-                            <TextView
-                                android:id="@+id/tv_total_expense_value"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:text="$230"
-                                android:fontFamily="@font/nunito_semibold"
-                                android:textColor="@color/background_blue"
-                                android:textSize="20sp" />
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="$"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_expense_value"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:fontFamily="@font/nunito_semibold"
+                                    android:text="0"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:text="Last Modified - 02/May/2012"
+                                android:text="Last Added - 11 May,2016"
                                 android:textSize="12sp" />
+
 
                         </LinearLayout>
 
-
                     </LinearLayout>
-
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_add_transaction"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_margin="16dp"
                         android:drawableStart="@drawable/ic_baseline_add_24"
                         android:text="Add Transaction"
                         app:backgroundTint="@color/primary" />
-
                 </LinearLayout>
+
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -240,9 +241,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Recent Transactions"
                 android:fontFamily="@font/nunito_semibold"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:text="Recent Transactions"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_view_transaction" />
 
@@ -260,7 +261,7 @@
                 android:id="@+id/list_recently_added"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

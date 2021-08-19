@@ -13,8 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        android:fitsSystemWindows="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,8 +24,14 @@
         android:layout_width="match_parent"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_main"
+        app:backgroundTint="@color/white"
+        app:itemIconTint="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/nav_host_fragment_container"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

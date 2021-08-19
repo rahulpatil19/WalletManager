@@ -1,28 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:gravity="center"
-    android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/image_view_category"
-        tools:src="@drawable/ic_food"
-        android:layout_width="36dp"
-        android:layout_height="36dp"/>
+    <data>
 
-    <TextView
-        android:gravity="center"
-        android:textSize="16sp"
-        tools:text="Food and Drink"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textColor="@color/black"
-        android:id="@+id/tv_category"
+        <variable
+            name="category"
+            type="com.walletmanager.app.domain.Category" />
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rl_category_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_category_circle_blank"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/image_view_category"
+                android:layout_width="24dp"
+                setCategoryIcon="@{category.iconId}"
+                android:layout_height="24dp"
+                setCategoryIconColor="@{category.colorId}"
+                tools:src="@drawable/ic_category_food" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{category.name}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="Food and Drink" />
+
+    </LinearLayout>
+</layout>

@@ -1,5 +1,6 @@
 package com.walletmanager.app.domain
 
+import android.os.Parcelable
 import java.util.*
 
 data class Transaction(
@@ -12,5 +13,6 @@ data class Transaction(
     val month: String,
     val year: Int,
     val categoryIcon: Int,
+    val categoryColor: Int,
     val createdDate: Date
 )

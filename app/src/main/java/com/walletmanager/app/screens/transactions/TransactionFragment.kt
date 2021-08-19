@@ -31,6 +31,10 @@ class TransactionFragment : Fragment() {
 
         val walletDatabase = WalletDatabase.getInstance(requireContext())
 
+        binding.setLifecycleOwner {
+            viewLifecycleOwner.lifecycle
+        }
+
         val transactionViewModelFactory = AllTransactionViewModelFactory(TransactionRepository(walletDatabase.transactionDao), walletDatabase.transactionDao)
 
         transactionViewModel = ViewModelProvider(this, transactionViewModelFactory).get(AllTransactionViewModel::class.java)

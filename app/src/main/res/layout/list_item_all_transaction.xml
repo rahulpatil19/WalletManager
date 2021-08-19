@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="transaction"
             type="com.walletmanager.app.database.entities.DbTransaction" />
@@ -15,53 +14,49 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/image_view_category"
-            setCategoryImage="@{transaction.categoryIcon}"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_drink" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="@{transaction.title}"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/image_view_category"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_category"
-            app:layout_constraintEnd_toStartOf="@id/button_delete"
-            tools:text="Kachori or Chai asjndj lkaklsdasn djsa jans jnasdn" />
-
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_marginTop="4dp"
+        <RelativeLayout
+            android:id="@+id/rl_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            setDate="@{transaction.date}"
-            android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@id/image_view_category"
-            app:layout_constraintTop_toBottomOf="@+id/tv_category"
-            tools:text="20 July, 2020" />
+            android:background="@drawable/bg_category_circle_blank"
+            setCategoryBackgroundColor="@{transaction.categoryColor}"
+            android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_view_category"
+                setCategoryImage="@{transaction.categoryIcon}"
+                android:layout_width="24dp"
+                app:tint="@color/white"
+                android:layout_height="24dp"
+                tools:src="@drawable/ic_apple_fruits" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
             android:text="@{transaction.category}"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/image_view_category"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/rl_category"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Travel" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            setDate="@{transaction.date}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/rl_category"
+            app:layout_constraintTop_toBottomOf="@+id/tv_category"
+            tools:text="20 July, 2020" />
 
         <TextView
             android:id="@+id/tv_amount"
@@ -71,14 +66,29 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="@color/green"
-            android:textSize="20sp"
+            android:fontFamily="@font/nunito_semibold"
             android:gravity="end"
+            android:textColor="@color/green"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_category"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="$24675" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="@{transaction.title}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/button_delete"
+            app:layout_constraintStart_toEndOf="@id/rl_category"
+            app:layout_constraintTop_toBottomOf="@+id/rl_category"
+            tools:text="Kachori or Chai asjndj lkaklsdasn djsa jans jnasdn" />
 
         <ImageView
             android:id="@+id/button_delete"

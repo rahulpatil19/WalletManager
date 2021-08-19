@@ -3,12 +3,13 @@ package com.walletmanager.app.screens.statistic
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.walletmanager.app.databinding.ListItemHistoryBinding
 import com.walletmanager.app.domain.Transaction
 
-class HistoryAdapter :
-    androidx.recyclerview.widget.ListAdapter<Transaction, HistoryAdapter.TransactionViewHolder>(
+class StatisticAdapter :
+    ListAdapter<Transaction, StatisticAdapter.TransactionViewHolder>(
         TransactionDiffUtil) {
 
     class TransactionViewHolder(val binding: ListItemHistoryBinding) :
