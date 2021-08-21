@@ -70,9 +70,10 @@
                 android:src="@drawable/ic_arrow_carrot_right" />
         </LinearLayout>
 
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_select_year">
@@ -117,7 +118,7 @@
                     android:layout_margin="16dp"
                     app:cardElevation="8dp"
                     app:cardCornerRadius="8dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -268,6 +269,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -422,6 +425,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -578,6 +583,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:visibility="gone"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_mar">
@@ -731,6 +738,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -885,6 +894,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1039,6 +1050,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1193,6 +1206,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1347,6 +1362,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1501,6 +1518,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1655,6 +1674,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1809,6 +1830,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="8dp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -1958,7 +1981,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -11,14 +11,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Settings" />
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Settings" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,6 +38,7 @@
 
                 <LinearLayout
                     android:padding="16dp"
+                    android:visibility="gone"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -38,26 +46,22 @@
 
                     <ImageView
                         android:src="@drawable/ic_baseline_language_24"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"/>
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
 
                     <TextView
                         android:layout_marginStart="16dp"
-                        android:text="Language"
+                        android:text="@string/text_language"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:src="@drawable/ic_arrow_carrot_right"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/layout_settings_change_currency"
                     android:padding="16dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
@@ -66,27 +70,24 @@
 
                     <ImageView
                         android:src="@drawable/ic_baseline_trending_down_24"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"/>
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
 
                     <TextView
                         android:layout_marginStart="16dp"
-                        android:text="Change Currency"
+                        android:text="@string/text_change_currency"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"/>
 
-                    <ImageView
-                        android:src="@drawable/ic_arrow_carrot_right"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:padding="16dp"
+                    android:id="@+id/layout_settings_rate_us"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -94,27 +95,23 @@
 
                     <ImageView
                         android:src="@drawable/ic_baseline_rate_review_24"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"/>
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
 
                     <TextView
                         android:layout_marginStart="16dp"
-                        android:text="Rate us"
+                        android:text="@string/text_rate_us"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:src="@drawable/ic_arrow_carrot_right"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:padding="16dp"
+                    android:id="@+id/layout_settings_privacy"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -122,27 +119,23 @@
 
                     <ImageView
                         android:src="@drawable/ic_baseline_policy_24"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"/>
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
 
                     <TextView
                         android:layout_marginStart="16dp"
-                        android:text="Privacy Policy"
+                        android:text="@string/text_privacy_policy"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:src="@drawable/ic_arrow_carrot_right"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:padding="16dp"
+                    android:id="@+id/layout_settings_about"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -150,21 +143,16 @@
 
                     <ImageView
                         android:src="@drawable/ic_baseline_info_24"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"/>
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
 
                     <TextView
                         android:layout_marginStart="16dp"
-                        android:text="About us"
+                        android:text="@string/text_about"
                         android:textColor="@color/black"
                         android:layout_width="0dp"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"/>
-
-                    <ImageView
-                        android:src="@drawable/ic_arrow_carrot_right"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>

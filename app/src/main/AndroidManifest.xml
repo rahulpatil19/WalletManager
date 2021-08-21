@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WalletManager">
-        <activity android:name=".screens.edit.EditTransactionActivity"></activity>
         <activity android:name=".screens.create.AddTransactionActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

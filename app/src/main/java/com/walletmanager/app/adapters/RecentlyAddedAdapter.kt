@@ -4,13 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.walletmanager.app.R
+import com.walletmanager.app.databinding.ListItemRecentlyAddedBinding
 import com.walletmanager.app.domain.Transaction
 
-class RecentlyAddedAdapter:
+class RecentlyAddedAdapter :
     ListAdapter<Transaction, RecentlyAddedAdapter.RecentlyAddedViewHolder>(TransactionDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentlyAddedViewHolder {
@@ -21,19 +23,21 @@ class RecentlyAddedAdapter:
         holder.bind(getItem(position))
     }
 
-    class RecentlyAddedViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val amountTv: TextView = itemView.findViewById(R.id.tv_amount)
-        val categoryTv: TextView = itemView.findViewById(R.id.tv_category)
+    class RecentlyAddedViewHolder(val binding: ListItemRecentlyAddedBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(dbTransaction: Transaction){
-            amountTv.text = dbTransaction.amount.toString()
-            categoryTv.text = dbTransaction.category
+        fun bind(transaction: Transaction) {
+            binding.transaction = transaction
+            binding.executePendingBindings()
         }
 
-        companion object{
-            fun create(parent: ViewGroup) : RecentlyAddedViewHolder{
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_recently_added, parent, false)
-                return RecentlyAddedViewHolder(view)
+        companion object {
+            fun create(parent: ViewGroup): RecentlyAddedViewHolder {
+                val binding =
+                    ListItemRecentlyAddedBinding.inflate(LayoutInflater.from(parent.context),
+                        parent,
+                        false)
+                return RecentlyAddedViewHolder(binding)
             }
         }
     }

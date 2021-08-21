@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.*
 class HomeRepository(val transactionDao: TransactionDao) {
 
     val dbTransactionList: Flow<List<Transaction>> =
-        transactionDao.getAllTransaction().map {
+        transactionDao.getTenRecentTransactions().map {
             it.asTransaction()
                 .asReversed()
-        }
+        }.take(10)
 }

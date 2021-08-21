@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/image_view_country"
+            android:layout_width="44dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/ic_category_food" />
+
+        <TextView
+            android:id="@+id/tv_currency_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:maxLines="1"
+            android:text="Australian dollar"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/image_view_country"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Food and Drink" />
+
+        <TextView
+            android:id="@+id/tv_currency_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="USD"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_currency_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_currency_name" />
+
+        <TextView
+            android:layout_marginEnd="8dp"
+            android:id="@+id/tv_currency_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Symbol"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

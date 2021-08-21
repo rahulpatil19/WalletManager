@@ -1,10 +1,18 @@
 package com.walletmanager.app.screens.settings
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.walletmanager.app.R
+import com.walletmanager.app.databinding.FragmentSettingsBinding
+import com.walletmanager.app.utils.WalletPreference
+import com.walletmanager.app.utils.WalletPreference.CURRENCY_NAME
 
 class SettingsFragment : Fragment(){
 
@@ -12,7 +20,43 @@ class SettingsFragment : Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    ): View {
+        val binding : FragmentSettingsBinding = FragmentSettingsBinding.inflate(inflater, container, false)
+
+        binding.layoutSettingsRateUs.setOnClickListener {
+            rateUs()
+        }
+
+        binding.layoutSettingsAbout.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_aboutSheetFragment)
+        }
+
+        binding.layoutSettingsChangeCurrency.setOnClickListener {
+            chooseCountry()
+        }
+
+        return binding.root
+   }
+
+    fun chooseCountry(){
+     /*   val picker = CurrencyPicker.newInstance("Choose currency")
+        picker.setListener(CurrencyPickerListener { name, code, symbol, flagDrawableResourceId ->
+            storeCurrencyData(requireContext(), name, code, symbol, flagDrawableResourceId)
+            picker.dismiss()
+        })
+
+        picker.show(childFragmentManager, "Currency Picker")*/
+       // findNavController().navigate(R.id.action_settingsFragment_to_currencySheetFragment)
+        val selectDateBottomSheetFragment = CurrencySheetFragment()
+        childFragmentManager.let {
+            selectDateBottomSheetFragment.show(it, "currency")
+        }
+    }
+
+    fun rateUs(){
+        val playStoreLink = "https://play.google.com/store/apps/details?=com.walletmanager.app"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setData(Uri.parse(playStoreLink))
+        startActivity(intent)
     }
 }

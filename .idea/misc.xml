@@ -3,8 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/drawable/bg_category_circle_blank.xml" value="0.17962962962962964" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_main.xml" value="0.12182971014492754" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_category.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_choose_transaction.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_home.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_about.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_currency.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_statistic.xml" value="0.1" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_all_transaction.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_category.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_currency.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_recently_added.xml" value="0.17864583333333334" />
       </map>
     </option>
   </component>

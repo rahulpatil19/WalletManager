@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_statisticFragment"
             app:destination="@id/statisticFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <activity
@@ -69,6 +72,25 @@
         android:id="@+id/monthDataFragment"
         android:name="com.walletmanager.app.screens.monthlydata.MonthDataFragment"
         android:label="MonthDataFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.walletmanager.app.screens.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutSheetFragment"
+            app:destination="@id/aboutSheetFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_currencySheetFragment"
+            app:destination="@id/currencySheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/aboutSheetFragment"
+        android:name="com.walletmanager.app.screens.settings.AboutSheetFragment"
+        android:label="AboutSheetFragment" />
+    <fragment
+        android:id="@+id/currencySheetFragment"
+        android:name="com.walletmanager.app.screens.settings.CurrencySheetFragment"
+        android:label="CurrencySheetFragment" />
 
 
 </navigation>

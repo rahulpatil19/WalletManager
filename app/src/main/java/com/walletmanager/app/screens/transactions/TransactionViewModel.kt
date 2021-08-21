@@ -19,9 +19,6 @@ class AllTransactionViewModel(
     val navigateToMonth: LiveData<Boolean>
         get() = _navigateToMonth
 
-    val dbTransactionList: LiveData<List<Transaction>> =
-        transactionRepository.dbTransactionList.asLiveData()
-
     val transactionByPage: Flow<PagingData<TransactionModel>> =
         Pager(PagingConfig(pageSize = 10, enablePlaceholders = false, prefetchDistance = 3)) {
             transactionDao.getTransactionPageSortedByDate()

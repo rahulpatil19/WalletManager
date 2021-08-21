@@ -40,6 +40,11 @@ fun TextView.setDate(date: Date) {
     text = formatDate(date)
 }
 
+@BindingAdapter("android:setDateWithYear")
+fun TextView.setDateWithYear(date: Date){
+    text = formatDateWithYear(date)
+}
+
 // Select category bindings...
 
 @BindingAdapter("setCategoryBackgroundColor")

@@ -12,19 +12,16 @@ interface TransactionDao {
     suspend fun insertTransaction(dbTransaction: DbTransaction)
 
     // using this at home screen to get 10 recent transactions
-    @Query("SELECT * FROM table_all_transaction")
-    fun getAllTransaction(): Flow<List<DbTransaction>>
-
-    // Used in wallet filter by year
-    @Query("SELECT * FROM table_all_transaction WHERE year LIKE :year")
-    fun getTransactionByYear(year: Int): Flow<List<DbTransaction>>
-
-    @Query("SELECT * FROM table_all_transaction")
-    fun getTransactionByPage(): PagingSource<Int, DbTransaction>
+    @Query("SELECT * FROM table_all_transaction ORDER BY date")
+    fun getTenRecentTransactions(): Flow<List<DbTransaction>>
 
     // default query to get all the transaction by page
     @Query("SELECT * FROM table_all_transaction ORDER BY date")
     fun getTransactionPageSortedByDate(): PagingSource<Int, DbTransaction>
+
+    // Used in statistics filter by year
+    @Query("SELECT * FROM table_all_transaction WHERE year LIKE :year")
+    fun getTransactionByYear(year: Int): Flow<List<DbTransaction>>
 
     // Used in wallet filter by month
     @Query("SELECT * FROM table_all_transaction WHERE month LIKE :month ORDER BY date")

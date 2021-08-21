@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 
 class TransactionRepository(transactionDao: TransactionDao) {
 
-    val dbTransactionList: Flow<List<Transaction>> = transactionDao.getAllTransaction().map {
+    val dbTransactionList: Flow<List<Transaction>> = transactionDao.getTenRecentTransactions().map {
         it.asTransaction()
     }
 }

@@ -38,6 +38,17 @@
 
     <string name="format_total_transactions">"%1$d transactions"</string>
 
+
+    <!-- Settings text -->
+   <string name="text_about">About</string>
+   <string name="text_privacy_policy">Privacy Policy</string>
+   <string name="text_rate_us">Rate us</string>
+   <string name="text_change_currency">Change currency</string>
+   <string name="text_language">Language</string>
+    <string name="title_select_currency">Select Currency</string>
+    <string name="ruppee_symbol">\u20B9</string>
+    <string name="button_close">Close</string>
+
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->
 
 

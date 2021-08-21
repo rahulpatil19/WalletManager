@@ -24,8 +24,6 @@
         android:layout_width="match_parent"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_main"
-        app:backgroundTint="@color/white"
-        app:itemIconTint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/nav_host_fragment_container"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_height="wrap_content"

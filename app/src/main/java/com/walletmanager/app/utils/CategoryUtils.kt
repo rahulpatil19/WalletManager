@@ -1,12 +1,6 @@
 package com.walletmanager.app.utils
 
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.res.ResourcesCompat
-import androidx.databinding.BindingAdapter
 import com.walletmanager.app.R
-import com.walletmanager.app.WalletApplication
 import com.walletmanager.app.domain.Category
 
 

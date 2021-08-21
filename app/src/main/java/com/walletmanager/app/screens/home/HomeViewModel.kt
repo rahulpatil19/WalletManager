@@ -9,11 +9,6 @@ import kotlinx.coroutines.flow.single
 
 class HomeViewModel(val transactionDao: TransactionDao, homeRepository: HomeRepository) : ViewModel() {
 
-    val job = Job()
-
-    val scope = CoroutineScope(Dispatchers.Main + job)
-
-    private var _recentlyAddedList = MutableLiveData<List<Transaction>>()
     val recentlyAddedList: LiveData<List<Transaction>> = homeRepository.dbTransactionList.asLiveData()
 
     private var _totalAmount = MutableLiveData<Long>()
@@ -51,17 +46,6 @@ class HomeViewModel(val transactionDao: TransactionDao, homeRepository: HomeRepo
                 }
                 else if (i.type.equals("expense")){
                     _totalExpense.value = _totalExpense.value?.plus(i.amount)
-                }
-            }
-        }
-    }
-
-    fun getRecentlyAddedTransaction() {
-        scope.launch {
-            withContext(Dispatchers.IO) {
-                val list = transactionDao.getAllTransaction().single().asTransaction()
-                withContext(Dispatchers.Main) {
-                    _recentlyAddedList.value = list
                 }
             }
         }
