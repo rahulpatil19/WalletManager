@@ -81,7 +81,6 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
     var junIncome: Long = 0
     var junLastModified: String = ""
 
-
     private var _julTotalTransaction = MutableLiveData<Int>()
     val julTotalTransaction: LiveData<Int>
         get() = _julTotalTransaction
@@ -91,7 +90,6 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
     var julIncome: Long = 0
     var julLastModified: String = ""
 
-
     private var _augTotalTransaction = MutableLiveData<Int>()
     val augTotalTransaction: LiveData<Int>
         get() = _augTotalTransaction
@@ -100,7 +98,6 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
     var augExpense: Long = 0
     var augIncome: Long = 0
     var augLastModified: String = ""
-
 
     private var _sepTotalTransaction = MutableLiveData<Int>()
     val sepTotalTransaction: LiveData<Int>

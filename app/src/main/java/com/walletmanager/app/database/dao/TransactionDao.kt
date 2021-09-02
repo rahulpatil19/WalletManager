@@ -24,13 +24,12 @@ interface TransactionDao {
     fun getTransactionByYear(year: Int): Flow<List<DbTransaction>>
 
     // Used in wallet filter by month
-    @Query("SELECT * FROM table_all_transaction WHERE month LIKE :month ORDER BY date")
-    fun getTransactionByMonth(month: String): PagingSource<Int, DbTransaction>
+    @Query("SELECT * FROM table_all_transaction WHERE month LIKE :month AND year LIKE :year ORDER BY date")
+    fun getTransactionByMonth(month: String, year: Int): Flow<List<DbTransaction>>
 
     // used in wallet filter category
     @Query("SELECT * FROM table_all_transaction WHERE category LIKE :category ORDER BY date")
     fun getTransactionByCategory(category: String): PagingSource<Int, DbTransaction>
-
 
     @Update
     suspend fun updateTransaction(dbTransaction: DbTransaction)

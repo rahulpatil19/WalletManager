@@ -75,11 +75,34 @@
     <fragment
         android:id="@+id/statisticFragment"
         android:name="com.walletmanager.app.screens.statistic.StatisticFragment"
-        android:label="StatisticFragment" />
+        android:label="StatisticFragment" >
+        <action
+            android:id="@+id/action_statisticFragment_to_monthDataFragment"
+            app:destination="@id/monthDataFragment" />
+    </fragment>
     <fragment
         android:id="@+id/monthDataFragment"
         android:name="com.walletmanager.app.screens.monthlydata.MonthDataFragment"
-        android:label="MonthDataFragment" />
+        android:label="MonthDataFragment" >
+        <argument
+            android:name="month"
+            app:argType="string" />
+        <argument
+            android:name="year"
+            app:argType="integer" />
+        <argument
+            android:name="income"
+            app:argType="long" />
+        <argument
+            android:name="expense"
+            app:argType="long" />
+        <argument
+            android:name="totalAmount"
+            app:argType="long" />
+        <argument
+            android:name="totalTransaction"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.walletmanager.app.screens.settings.SettingsFragment"

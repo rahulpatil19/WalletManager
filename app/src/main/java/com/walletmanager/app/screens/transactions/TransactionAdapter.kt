@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.walletmanager.app.databinding.ListItemAllTransactionBinding
 import com.walletmanager.app.database.entities.DbTransaction
 import com.walletmanager.app.databinding.ListItemMonthHeaderBinding
+import com.walletmanager.app.screens.monthlydata.MonthDataAdapter
 import java.lang.ClassCastException
 
 private const val VIEW_TYPE_HEADER = 1

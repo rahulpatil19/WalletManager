@@ -6,13 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.walletmanager.app.R
 import com.walletmanager.app.databinding.FragmentSettingsBinding
-import com.walletmanager.app.utils.WalletPreference
-import com.walletmanager.app.utils.WalletPreference.CURRENCY_NAME
 
 class SettingsFragment : Fragment(){
 
@@ -38,7 +35,7 @@ class SettingsFragment : Fragment(){
         return binding.root
    }
 
-    fun chooseCountry(){
+    private fun chooseCountry(){
      /*   val picker = CurrencyPicker.newInstance("Choose currency")
         picker.setListener(CurrencyPickerListener { name, code, symbol, flagDrawableResourceId ->
             storeCurrencyData(requireContext(), name, code, symbol, flagDrawableResourceId)
@@ -53,10 +50,10 @@ class SettingsFragment : Fragment(){
         }
     }
 
-    fun rateUs(){
+    private fun rateUs(){
         val playStoreLink = "https://play.google.com/store/apps/details?=com.walletmanager.app"
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.setData(Uri.parse(playStoreLink))
+        intent.data = Uri.parse(playStoreLink)
         startActivity(intent)
     }
 }

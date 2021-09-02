@@ -1,25 +1,19 @@
 package com.walletmanager.app.screens.statistic
 
-import android.R.attr
 import android.app.Application
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
 import com.walletmanager.app.R
 import com.walletmanager.app.database.WalletDatabase
 import com.walletmanager.app.databinding.FragmentStatisticBinding
-import android.R.attr.label
-import androidx.core.content.ContextCompat
 
 
 class StatisticFragment : Fragment() {
@@ -28,8 +22,6 @@ class StatisticFragment : Fragment() {
 
     private lateinit var binding: FragmentStatisticBinding
     private lateinit var walletDatabase: WalletDatabase
-
-    private var pieChartList = listOf<PieEntry>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,6 +41,7 @@ class StatisticFragment : Fragment() {
         statisticViewModel =
             ViewModelProvider(this, statisticViewModelFactory).get(StatisticViewModel::class.java)
 
+        setupClickListeners()
 
         statisticViewModel.currentYear.observe(this.viewLifecycleOwner, {
             it?.let {
@@ -56,15 +49,6 @@ class StatisticFragment : Fragment() {
                 statisticViewModel.getAllTransactionFromYear(it)
             }
         })
-
-        binding.buttonPreviousYear.setOnClickListener({
-            statisticViewModel.onPreviousYearClick()
-        })
-
-        binding.buttonNextYear.setOnClickListener {
-            statisticViewModel.onNextYearClick()
-        }
-
 
         statisticViewModel.janTotalTransaction.observe(viewLifecycleOwner, {
             if (it != 0) {
@@ -263,8 +247,173 @@ class StatisticFragment : Fragment() {
             binding.statisticChart.data = pieData
             binding.statisticChart.invalidate()
         })
-
-
         return binding.root
+    }
+
+    private fun setupClickListeners(){
+        binding.buttonPreviousYear.setOnClickListener {
+            statisticViewModel.onPreviousYearClick()
+        }
+
+        binding.buttonNextYear.setOnClickListener {
+            statisticViewModel.onNextYearClick()
+        }
+
+        binding.cardJan.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Jan",
+                    it.currentYear.value!!,
+                    it.janIncome,
+                    it.janExpense,
+                    it.janTotalAmount,
+                    it.janTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardFeb.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Feb",
+                    it.currentYear.value!!,
+                    it.febIncome,
+                    it.febExpense,
+                    it.febTotalAmount,
+                    it.febTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardMar.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Mar",
+                    it.currentYear.value!!,
+                    it.marIncome,
+                    it.marExpense,
+                    it.marTotalAmount,
+                    it.marTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardApr.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Apr",
+                    it.currentYear.value!!,
+                    it.aprIncome,
+                    it.aprExpense,
+                    it.aprTotalAmount,
+                    it.aprTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardMay.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("May",
+                    it.currentYear.value!!,
+                    it.mayIncome,
+                    it.mayExpense,
+                    it.mayTotalAmount,
+                    it.mayTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardJun.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Jun",
+                    it.currentYear.value!!,
+                    it.junIncome,
+                    it.junExpense,
+                    it.junTotalAmount,
+                    it.junTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardJul.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Jul",
+                    it.currentYear.value!!,
+                    it.julIncome,
+                    it.julExpense,
+                    it.julTotalAmount,
+                    it.julTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+
+        binding.cardAug.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Aug",
+                    it.currentYear.value!!,
+                    it.augIncome,
+                    it.augExpense,
+                    it.augTotalAmount,
+                    it.augTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardSep.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Sep",
+                    it.currentYear.value!!,
+                    it.sepIncome,
+                    it.sepExpense,
+                    it.sepTotalAmount,
+                    it.sepTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardOct.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Oct",
+                    it.currentYear.value!!,
+                    it.octIncome,
+                    it.octExpense,
+                    it.octTotalAmount,
+                    it.octTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardNov.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Nov",
+                    it.currentYear.value!!,
+                    it.novIncome,
+                    it.novExpense,
+                    it.novTotalAmount,
+                    it.novTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
+
+        binding.cardDec.setOnClickListener {
+            val navDirection = statisticViewModel.let {
+                StatisticFragmentDirections.actionStatisticFragmentToMonthDataFragment("Dec",
+                    it.currentYear.value!!,
+                    it.decIncome,
+                    it.decExpense,
+                    it.decTotalAmount,
+                    it.decTotalTransaction.value!!)
+            }
+            findNavController().navigate(navDirection)
+        }
+
     }
 }
