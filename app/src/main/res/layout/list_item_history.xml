@@ -17,12 +17,12 @@
 
         <ImageView
             android:id="@+id/image_view_category"
-            setCategoryImage="@{transaction.categoryIcon}"
+            android:setCategoryImage="@{transaction.categoryIcon}"
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_drink" />
+            tools:src="@drawable/ic_apple_fruits" />
 
         <TextView
             android:id="@+id/tv_title"

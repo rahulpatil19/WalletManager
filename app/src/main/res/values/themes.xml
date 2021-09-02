@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WalletManager" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.WalletManager" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
@@ -15,12 +15,8 @@
         <item name="android:fontFamily">@font/nunito_regular</item>
 
         <item name="backgroundColor">@color/surface_color</item>
-        <item name="toolbarStyle">@style/Wallet.MaterialComponents.Toolbar</item>
     </style>
 
 
-    <style name="Wallet.MaterialComponents.Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="elevation">12dp</item>
-    </style>
 
 </resources>

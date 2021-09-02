@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.walletmanager.app.R
 import com.walletmanager.app.adapters.RecentlyAddedAdapter
 import com.walletmanager.app.databinding.FragmentHomeBinding
 import com.walletmanager.app.database.WalletDatabase
+import com.walletmanager.app.screens.update.UpdateTransactionActivityArgs
 
 class HomeFragment: Fragment() {
 
@@ -24,7 +27,7 @@ class HomeFragment: Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         walletDatabase = context?.let { WalletDatabase.getInstance(it) }!!
         val homeViewModelFactory = HomeViewModelFactory(walletDatabase.transactionDao, HomeRepository(walletDatabase.transactionDao))
@@ -32,7 +35,11 @@ class HomeFragment: Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val recentlyAddedAdapter = RecentlyAddedAdapter()
+        val recentlyAddedAdapter = RecentlyAddedAdapter({
+            val homeFragmentDirections = HomeFragmentDirections.actionHomeFragmentToUpdateTransactionActivity(it)
+            findNavController().navigate(homeFragmentDirections)
+        })
+
         binding.listRecentlyAdded.adapter = recentlyAddedAdapter
 
         homeViewModel.recentlyAddedList.observe(viewLifecycleOwner, {

@@ -3,27 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/ic_arrow_carrot_left"
-            app:title="@string/title_add_transaction" />
+            android:background="@color/white">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:navigationIcon="@drawable/ic_arrow_carrot_left"
+                android:layout_height="wrap_content"
+                app:title="@string/title_add_transaction" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_above="@id/button_add_amount"
-            android:layout_below="@id/toolbar">
+            android:layout_below="@id/appBar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,14 +58,14 @@
 
 
                     <RelativeLayout
-                        android:id="@+id/layout_category"
+                        android:id="@+id/layout_category_create"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_category_circle_blank"
+                        android:background="@drawable/bg_category_create"
                         android:padding="8dp">
 
                         <ImageView
-                            android:id="@+id/iv_category"
+                            android:id="@+id/iv_category_create"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             tools:src="@drawable/ic_apple_fruits" />
@@ -69,7 +74,7 @@
 
                     <TextView
                         android:layout_marginStart="16dp"
-                        android:id="@+id/tv_category"
+                        android:id="@+id/tv_category_create"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"

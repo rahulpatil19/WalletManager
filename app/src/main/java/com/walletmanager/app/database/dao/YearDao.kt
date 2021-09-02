@@ -1,9 +1,6 @@
 package com.walletmanager.app.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.walletmanager.app.database.entities.DbYear
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +12,9 @@ interface YearDao {
 
     @Query("SELECT * FROM table_year ORDER BY year")
     fun getAllYears(): Flow<List<DbYear>>
+
+    @Update
+    suspend fun updateTransactionYear(dbYear: DbYear)
 }
 
 

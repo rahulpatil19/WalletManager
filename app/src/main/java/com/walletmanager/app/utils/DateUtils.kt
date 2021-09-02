@@ -19,6 +19,11 @@ fun formatDateWithYear(date: Date): String{
     return dateFormat.format(date)
 }
 
+fun formatSelectedDate(date: Date): String{
+    val dateFormat = SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault())
+    return dateFormat.format(date)
+}
+
 fun getMonthString(month: Int): String {
     return when (month) {
         0 -> "Jan"

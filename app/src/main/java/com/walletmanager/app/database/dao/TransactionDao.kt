@@ -31,6 +31,10 @@ interface TransactionDao {
     @Query("SELECT * FROM table_all_transaction WHERE category LIKE :category ORDER BY date")
     fun getTransactionByCategory(category: String): PagingSource<Int, DbTransaction>
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateTransaction(dbTransaction: DbTransaction)
+
+    @Update
+    suspend fun updateTransaction(dbTransaction: DbTransaction)
+
+    @Delete
+    suspend fun deleteTransaction(dbTransaction: DbTransaction)
 }

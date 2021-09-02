@@ -26,7 +26,7 @@
 
             <ImageView
                 android:id="@+id/image_view_category"
-                setCategoryImage="@{transaction.categoryIcon}"
+                android:setCategoryImage="@{transaction.categoryIcon}"
                 android:layout_width="24dp"
                 app:tint="@color/white"
                 android:layout_height="24dp"

@@ -4,13 +4,13 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
 import com.walletmanager.app.R
 import java.util.*
 
 // Transaction List Bindings
-
 @BindingAdapter("setTransactionAmount")
 fun TextView.setTransactionAmount(amount: Long) {
     text = amount.toString()
@@ -25,13 +25,11 @@ fun TextView.setTransactionTextColor(type: String) {
     }
 }
 
-@BindingAdapter("setCategoryImage")
+@BindingAdapter("android:setCategoryImage")
 fun ImageView.setCategoryImage(iconId: Int?) {
     if (iconId != 0) {
-        setImageDrawable(iconId?.let {
-            ResourcesCompat.getDrawable(resources,
-                it, resources.newTheme())
-        })
+        setImageDrawable(ResourcesCompat.getDrawable(resources, iconId!!, resources.newTheme())
+            /* AppCompatResources.getDrawable(context, iconId)*/)
     }
 }
 
@@ -41,19 +39,16 @@ fun TextView.setDate(date: Date) {
 }
 
 @BindingAdapter("android:setDateWithYear")
-fun TextView.setDateWithYear(date: Date){
+fun TextView.setDateWithYear(date: Date) {
     text = formatDateWithYear(date)
 }
 
 // Select category bindings...
-
 @BindingAdapter("setCategoryBackgroundColor")
 fun RelativeLayout.setCategoryBackgroundColor(colorId: Int) {
-    background.setTint(ResourcesCompat.getColor(resources,
-        colorId,
-        resources.newTheme()))
+    background.setTint(ContextCompat.getColor(context,
+        colorId))
 }
-
 
 @BindingAdapter("setCategoryIconColor")
 fun ImageView.setCategoryIconColor(colorId: Int) {

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +49,8 @@ class AddTransactionActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_transaction)
 
+        setSupportActionBar(binding.toolbar)
+
         walletDatabase = WalletDatabase.getInstance(this)
 
         val bundle = intent.extras
@@ -58,7 +61,6 @@ class AddTransactionActivity : AppCompatActivity(),
 
             val date = getCurrentDate()
             binding.tvDate.text = date
-
 
             setupClickListeners()
 
@@ -76,13 +78,12 @@ class AddTransactionActivity : AppCompatActivity(),
         transactionCategory =
             Category("Travel", R.drawable.ic_category_travel, R.color.yellow_green)
         // default category setup
-        binding.tvCategory.text = transactionCategory.name
-        binding.ivCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
-            transactionCategory.iconId,
-            resources.newTheme()))
-        binding.ivCategory.drawable.setTint(ResourcesCompat.getColor(resources,
+        binding.tvCategoryCreate.text = transactionCategory.name
+        binding.ivCategoryCreate.setImageDrawable(ResourcesCompat.getDrawable(resources,
+            transactionCategory.iconId, theme))
+        binding.ivCategoryCreate.drawable.setTint(ResourcesCompat.getColor(resources,
             transactionCategory.colorId,
-            resources.newTheme()))
+            theme))
 
         val addExpenseViewModelFactory =
             AddExpenseViewModelFactory(walletDatabase.yearDao,
@@ -107,14 +108,14 @@ class AddTransactionActivity : AppCompatActivity(),
         transactionCategory = Category("Salary", R.drawable.ic_category_money_bag, R.color.green)
 
         // default category setup
-        binding.tvCategory.text = transactionCategory.name
-        binding.ivCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
+        binding.tvCategoryCreate.text = transactionCategory.name
+        binding.ivCategoryCreate.setImageDrawable(ResourcesCompat.getDrawable(resources,
             transactionCategory.iconId,
             resources.newTheme()))
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            binding.ivCategory.drawable.setTint(resources.getColor(transactionCategory.colorId,
-                theme))
+            binding.ivCategoryCreate.drawable.setTint(resources.getColor(transactionCategory.colorId,
+                resources.newTheme()))
         }
 
         Log.d("Category data", transactionCategory.toString())
@@ -221,8 +222,8 @@ class AddTransactionActivity : AppCompatActivity(),
 
     override fun onCategoryClick(category: Category) {
         transactionCategory = category
-        binding.tvCategory.text = category.name
-        binding.ivCategory.setImageDrawable(ResourcesCompat.getDrawable(resources,
+        binding.tvCategoryCreate.text = category.name
+        binding.ivCategoryCreate.setImageDrawable(ResourcesCompat.getDrawable(resources,
             category.iconId,
             resources.newTheme()))
         //  Toast.makeText(this, "Category selected is ${category.name}", Toast.LENGTH_SHORT).show()
@@ -233,8 +234,20 @@ class AddTransactionActivity : AppCompatActivity(),
         selectedMonth = getMonthString(calendar.get(Calendar.MONTH))
         selectedYear = calendar.get(Calendar.YEAR)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        binding.tvDate.text = getString(R.string.selected_date, day, selectedMonth, selectedYear)
+        val sDay: String
+        sDay = if(day < 10){
+            "0$day"
+        } else{
+            "$day"
+        }
+        binding.tvDate.text = getString(R.string.selected_date, sDay, selectedMonth, selectedYear)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == android.R.id.home){
+            super.onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

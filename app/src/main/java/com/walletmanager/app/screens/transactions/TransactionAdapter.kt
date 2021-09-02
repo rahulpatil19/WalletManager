@@ -13,25 +13,38 @@ import java.lang.ClassCastException
 private const val VIEW_TYPE_HEADER = 1
 private const val VIEW_TYPE_DATA = 2
 
-class AllTransactionAdapter :
+class AllTransactionAdapter(val selectedTransaction: (DbTransaction, String) -> Unit) :
     PagingDataAdapter<TransactionModel, RecyclerView.ViewHolder>(
         TransactionDiffUtil) {
 
-    class TransactionViewHolder(val binding: ListItemAllTransactionBinding) :
+    class TransactionViewHolder(
+        val binding: ListItemAllTransactionBinding,
+        val selectedTransaction: (DbTransaction, String) -> Unit,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dbTransaction: DbTransaction) {
             binding.transaction = dbTransaction
             binding.executePendingBindings()
+            binding.root.setOnClickListener {
+                selectedTransaction(dbTransaction, "edit")
+            }
+
+            binding.buttonDelete.setOnClickListener {
+                selectedTransaction(dbTransaction, "delete")
+            }
         }
 
         companion object {
-            fun create(parent: ViewGroup): TransactionViewHolder {
+            fun create(
+                parent: ViewGroup,
+                selectedTransaction: (DbTransaction, String) -> Unit,
+            ): TransactionViewHolder {
                 val binding =
                     ListItemAllTransactionBinding.inflate(LayoutInflater.from(parent.context),
                         parent,
                         false)
-                return TransactionViewHolder(binding)
+                return TransactionViewHolder(binding, selectedTransaction)
             }
         }
     }
@@ -57,7 +70,7 @@ class AllTransactionAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            VIEW_TYPE_DATA -> TransactionViewHolder.create(parent)
+            VIEW_TYPE_DATA -> TransactionViewHolder.create(parent, selectedTransaction)
             VIEW_TYPE_HEADER -> HeaderViewHolder.create(parent)
             else -> throw ClassCastException("Unknown ViewHolder class")
         }

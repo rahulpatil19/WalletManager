@@ -23,6 +23,10 @@ data class DbTransaction(
     val createdDate: Date,
 )
 
+fun DbTransaction.asDomainTransaction(): Transaction{
+    return Transaction(id, category, amount, title, date, type, month, year, categoryIcon, categoryColor, createdDate)
+}
+
 fun List<DbTransaction>.asTransaction(): List<Transaction> {
     return map { dbTransaction ->
         Transaction(

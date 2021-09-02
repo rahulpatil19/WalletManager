@@ -7,7 +7,6 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        tools:layout="@layout/fragment_home"
         android:name="com.walletmanager.app.screens.home.HomeFragment"
         android:label="HomeFragment">
         <action
@@ -25,6 +24,9 @@
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateTransactionActivity"
+            app:destination="@id/updateTransactionActivity" />
     </fragment>
 
     <activity
@@ -54,12 +56,18 @@
         <action
             android:id="@+id/action_allTransactionFragment_to_monthDataFragment"
             app:destination="@id/monthDataFragment" />
+        <action
+            android:id="@+id/action_allTransactionFragment_to_updateTransactionActivity"
+            app:destination="@id/updateTransactionActivity" />
+        <action
+            android:id="@+id/action_allTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
         android:name="com.walletmanager.app.screens.wallet.WalletFragment"
-        android:label="WalletFragment" >
+        android:label="WalletFragment">
         <action
             android:id="@+id/action_walletFragment_to_walletFilterSheetFragment"
             app:destination="@id/walletFilterSheetFragment" />
@@ -91,6 +99,14 @@
         android:id="@+id/currencySheetFragment"
         android:name="com.walletmanager.app.screens.settings.CurrencySheetFragment"
         android:label="CurrencySheetFragment" />
+    <activity
+        android:id="@+id/updateTransactionActivity"
+        android:name="com.walletmanager.app.screens.update.UpdateTransactionActivity"
+        android:label="UpdateTransactionActivity" >
+        <argument
+            android:name="transaction"
+            app:argType="com.walletmanager.app.domain.Transaction" />
+    </activity>
 
 
 </navigation>
