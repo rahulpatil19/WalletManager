@@ -3,11 +3,12 @@
 
     <color name="background_blue">#1F1E30</color>
 
-  <!--  <color name="blue_20">#2C5AC2</color>
-    <color name="blue_30">#305EC7</color>
-    <color name="blue_40">#4C78DB</color>-->
+    <color name="background_color">#F2EEF0</color>
+    <!--  <color name="blue_20">#2C5AC2</color>
+      <color name="blue_30">#305EC7</color>
+      <color name="blue_40">#4C78DB</color>-->
 
-    <color name="primary">#5F238E</color>
+    <color name="primary">#192226</color>
     <color name="green">#2DC858</color>
     <color name="yellow_one">#FFD343</color>
     <color name="yellow_two">#FFBF00</color>

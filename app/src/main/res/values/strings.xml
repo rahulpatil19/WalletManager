@@ -57,6 +57,7 @@
     <string name="title_update_income">Update Income</string>
     <string name="title_update_expense">Update Expense</string>
     <string name="title_month_transaction">Monthly Transactions</string>
+    <string name="create">Create</string>
 
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->
