@@ -11,19 +11,26 @@ import com.walletmanager.app.R
 import java.util.*
 
 // Transaction List Bindings
-@BindingAdapter("setTransactionAmount")
-fun TextView.setTransactionAmount(amount: Long) {
+@BindingAdapter(value = ["setAmount", "setColor"])
+fun TextView.setTransactionAmount(amount: Long, type: String) {
     text = amount.toString()
-}
-
-@BindingAdapter("setTransactionColor")
-fun TextView.setTransactionTextColor(type: String) {
     if (type.equals("income")) {
         setTextColor(ResourcesCompat.getColor(resources, R.color.green, resources.newTheme()))
     } else {
         setTextColor(ResourcesCompat.getColor(resources, R.color.red_1, resources.newTheme()))
     }
 }
+
+@BindingAdapter(value = ["setCurrency", "setTransactionSymbol"])
+fun TextView.setCurrency(currency: String, type: String) {
+    if (type == "income"){
+        text = context.getString(R.string.set_currency, "+ $currency")
+    }
+    else{
+        text = context.getString(R.string.set_currency, "- $currency")
+    }
+}
+
 
 @BindingAdapter("android:setCategoryImage")
 fun ImageView.setCategoryImage(iconId: Int?) {
@@ -61,3 +68,5 @@ fun ImageView.setCategoryIconColor(colorId: Int) {
 fun ImageView.setCategoryIcon(iconId: Int) {
     setImageDrawable(AppCompatResources.getDrawable(context, iconId))
 }
+
+

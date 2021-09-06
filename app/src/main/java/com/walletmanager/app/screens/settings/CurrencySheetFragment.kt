@@ -28,12 +28,11 @@ class CurrencySheetFragment : BottomSheetDialogFragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.list_currency)
 
-        val adapter = CurrencyAdapter(requireContext(), {
-            name, code, symbol, flagResourceId ->
+        val adapter = CurrencyAdapter(requireContext()) { name, code, symbol, flagResourceId ->
             WalletPreference.storeCurrencyData(requireContext(), name, code, symbol, flagResourceId)
             Toast.makeText(requireContext(), "$name selected", Toast.LENGTH_SHORT).show()
             dismiss()
-        })
+        }
 
         recyclerView.adapter = adapter
         adapter.currencyList = currencyList
@@ -74,7 +73,10 @@ class CurrencySheetFragment : BottomSheetDialogFragment() {
                     binding.tvCurrencySymbol.text = symbol
                 }
                 binding.root.setOnClickListener {
-                    selectedCurrency(name, code, symbol, flagResourceId)
+                    selectedCurrency(name,
+                        code,
+                        binding.tvCurrencySymbol.text.toString(),
+                        flagResourceId)
                 }
             }
 

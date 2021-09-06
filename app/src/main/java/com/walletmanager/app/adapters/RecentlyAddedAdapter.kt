@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.walletmanager.app.databinding.ListItemRecentlyAddedBinding
 import com.walletmanager.app.domain.Transaction
 
-class RecentlyAddedAdapter(val transaction: (transaction: Transaction)-> Unit) :
+class RecentlyAddedAdapter(
+    val currency: String,
+    val transaction: (transaction: Transaction) -> Unit,
+) :
     ListAdapter<Transaction, RecentlyAddedAdapter.RecentlyAddedViewHolder>(TransactionDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentlyAddedViewHolder {
@@ -16,14 +19,18 @@ class RecentlyAddedAdapter(val transaction: (transaction: Transaction)-> Unit) :
     }
 
     override fun onBindViewHolder(holder: RecentlyAddedViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), currency)
     }
 
-    class RecentlyAddedViewHolder(val binding: ListItemRecentlyAddedBinding, val selectedTransaction : (transaction: Transaction)-> Unit) :
+    class RecentlyAddedViewHolder(
+        val binding: ListItemRecentlyAddedBinding,
+        val selectedTransaction: (transaction: Transaction) -> Unit,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(transaction: Transaction) {
+        fun bind(transaction: Transaction, currency: String) {
             binding.transaction = transaction
+            binding.currency = currency
             binding.executePendingBindings()
             binding.root.setOnClickListener {
                 selectedTransaction(transaction)
@@ -31,7 +38,10 @@ class RecentlyAddedAdapter(val transaction: (transaction: Transaction)-> Unit) :
         }
 
         companion object {
-            fun create(parent: ViewGroup, transaction: (transaction: Transaction) -> Unit): RecentlyAddedViewHolder {
+            fun create(
+                parent: ViewGroup,
+                transaction: (transaction: Transaction) -> Unit,
+            ): RecentlyAddedViewHolder {
                 val binding =
                     ListItemRecentlyAddedBinding.inflate(LayoutInflater.from(parent.context),
                         parent,

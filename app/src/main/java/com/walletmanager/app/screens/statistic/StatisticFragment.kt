@@ -14,6 +14,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.walletmanager.app.R
 import com.walletmanager.app.database.WalletDatabase
 import com.walletmanager.app.databinding.FragmentStatisticBinding
+import com.walletmanager.app.utils.WalletPreference
 
 
 class StatisticFragment : Fragment() {
@@ -30,6 +31,10 @@ class StatisticFragment : Fragment() {
     ): View {
         binding = FragmentStatisticBinding.inflate(inflater, container, false)
 
+        val currency =
+            WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_SYMBOL)
+
+        setupCurrency(currency)
         val application = Application()
         walletDatabase = WalletDatabase.getInstance(requireContext())
 
@@ -250,7 +255,7 @@ class StatisticFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupClickListeners(){
+    private fun setupClickListeners() {
         binding.buttonPreviousYear.setOnClickListener {
             statisticViewModel.onPreviousYearClick()
         }
@@ -414,6 +419,55 @@ class StatisticFragment : Fragment() {
             }
             findNavController().navigate(navDirection)
         }
+    }
 
+    private fun setupCurrency(currency: String){
+        binding.tvJanCurrency.text = currency
+        binding.tvJanIncomeCurrency.text = currency
+        binding.tvJanExpenseCurrency.text = currency
+
+        binding.tvFebCurrency.text = currency
+        binding.tvFebIncomeCurrency.text = currency
+        binding.tvFebExpenseCurrency.text = currency
+
+        binding.tvMarCurrency.text = currency
+        binding.tvMarIncomeCurrency.text = currency
+        binding.tvMarExpenseCurrency.text = currency
+
+        binding.tvAprCurrency.text = currency
+        binding.tvAprIncomeCurrency.text = currency
+        binding.tvAprExpenseCurrency.text = currency
+
+        binding.tvMayCurrency.text = currency
+        binding.tvMayIncomeCurrency.text = currency
+        binding.tvMayExpenseCurrency.text = currency
+
+        binding.tvJunCurrency.text = currency
+        binding.tvJunIncomeCurrency.text = currency
+        binding.tvJunExpenseCurrency.text = currency
+
+        binding.tvJulCurrency.text = currency
+        binding.tvJulIncomeCurrency.text = currency
+        binding.tvJulExpenseCurrency.text = currency
+
+        binding.tvAugCurrency.text = currency
+        binding.tvAugIncomeCurrency.text = currency
+        binding.tvAugExpenseCurrency.text = currency
+
+        binding.tvSepCurrency.text = currency
+        binding.tvSepIncomeCurrency.text = currency
+        binding.tvSepExpenseCurrency.text = currency
+
+        binding.tvOctCurrency.text = currency
+        binding.tvOctIncomeCurrency.text = currency
+        binding.tvOctExpenseCurrency.text = currency
+
+        binding.tvNovCurrency.text = currency
+        binding.tvNovIncomeCurrency.text = currency
+        binding.tvNovExpenseCurrency.text = currency
+
+        binding.tvDecCurrency.text = currency
+        binding.tvDecIncomeCurrency.text = currency
+        binding.tvDecExpenseCurrency.text = currency
     }
 }

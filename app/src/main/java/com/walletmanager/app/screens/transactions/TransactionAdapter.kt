@@ -14,7 +14,10 @@ import java.lang.ClassCastException
 private const val VIEW_TYPE_HEADER = 1
 private const val VIEW_TYPE_DATA = 2
 
-class AllTransactionAdapter(val selectedTransaction: (DbTransaction, String) -> Unit) :
+class AllTransactionAdapter(
+    val currency: String,
+    val selectedTransaction: (DbTransaction, String) -> Unit,
+) :
     PagingDataAdapter<TransactionModel, RecyclerView.ViewHolder>(
         TransactionDiffUtil) {
 
@@ -24,8 +27,9 @@ class AllTransactionAdapter(val selectedTransaction: (DbTransaction, String) -> 
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(dbTransaction: DbTransaction) {
+        fun bind(dbTransaction: DbTransaction, currency: String) {
             binding.transaction = dbTransaction
+            binding.currency = currency
             binding.executePendingBindings()
             binding.root.setOnClickListener {
                 selectedTransaction(dbTransaction, "edit")
@@ -81,7 +85,7 @@ class AllTransactionAdapter(val selectedTransaction: (DbTransaction, String) -> 
         when (holder) {
             is TransactionViewHolder -> {
                 val transactionItem = getItem(position) as TransactionModel.TransactionData
-                holder.bind(transactionItem.transaction)
+                holder.bind(transactionItem.transaction, currency)
             }
             is HeaderViewHolder -> {
                 val monthItem = getItem(position) as TransactionModel.HeaderData

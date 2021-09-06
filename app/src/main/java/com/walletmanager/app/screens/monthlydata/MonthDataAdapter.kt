@@ -8,14 +8,15 @@ import com.walletmanager.app.databinding.ListItemAllTransactionBinding
 import com.walletmanager.app.databinding.ListItemMonthBinding
 import com.walletmanager.app.domain.Transaction
 
-class MonthDataAdapter :
+class MonthDataAdapter(val currency: String) :
     ListAdapter<Transaction, MonthDataAdapter.TransactionViewHolder>(TransactionDiffUtil) {
 
     class TransactionViewHolder private constructor(val binding: ListItemMonthBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(transaction: Transaction) {
+        fun bind(transaction: Transaction, currency: String) {
             binding.transaction = transaction
+            binding.currency = currency
             binding.executePendingBindings()
         }
 
@@ -33,7 +34,7 @@ class MonthDataAdapter :
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), currency)
     }
 }
 

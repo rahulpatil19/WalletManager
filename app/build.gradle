@@ -11,7 +11,7 @@ android {
     buildToolsVersion "31.0.0"
 
     defaultConfig {
-        applicationId "com.walletmanager.app"
+        applicationId "com.patilapps.walletmanager"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

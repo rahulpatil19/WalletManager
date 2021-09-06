@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.walletmanager.app.R
 import com.walletmanager.app.database.WalletDatabase
 import com.walletmanager.app.databinding.FragmentMonthDataBinding
+import com.walletmanager.app.utils.WalletPreference
 
 class MonthDataFragment : Fragment() {
 
@@ -25,6 +27,9 @@ class MonthDataFragment : Fragment() {
 
         val navArgs: MonthDataFragmentArgs by navArgs()
 
+        val currency =
+            WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_SYMBOL)
+
         val month = navArgs.month
         val year = navArgs.year
         val totalAmount = navArgs.totalAmount
@@ -33,6 +38,9 @@ class MonthDataFragment : Fragment() {
         val expense = navArgs.expense
 
         binding.tvMonthAndYear.text = "$month, $year"
+        binding.tvCurrency.text = currency
+        binding.tvTotalIncomeCurrency.text = getString(R.string.set_currency, "+$currency")
+        binding.tvTotalExpenseCurrency.text = getString(R.string.set_currency, "-$currency")
 
         initializeData(totalAmount, income, expense, totalTransactions)
 
@@ -46,7 +54,8 @@ class MonthDataFragment : Fragment() {
         viewModel = ViewModelProvider(this.viewModelStore,
             viewModelFactory).get(MonthDataViewModel::class.java)
 
-        val monthDataAdapter = MonthDataAdapter()
+
+        val monthDataAdapter = MonthDataAdapter(currency)
         binding.listMonth.adapter = monthDataAdapter
 
         viewModel.transactionList.observe(this.viewLifecycleOwner, {

@@ -37,7 +37,7 @@
     <string name="menu_filter">Filter</string>
 
     <string name="format_total_transactions">"%1$d transactions"</string>
-
+    <string name="set_currency">"%1$s"</string>
 
     <!-- Settings text -->
     <string name="text_about">About</string>
@@ -57,6 +57,7 @@
     <string name="title_update_income">Update Income</string>
     <string name="title_update_expense">Update Expense</string>
     <string name="title_month_transaction">Monthly Transactions</string>
+
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->
 

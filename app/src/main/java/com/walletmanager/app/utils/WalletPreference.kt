@@ -6,6 +6,7 @@ object WalletPreference {
 
     private const val WALLET_PREFERENCE = "wallet_preference"
 
+    const val FIRST_RUN = "preference_first_run"
     const val CURRENCY_NAME = "currency_name"
     const val CURRENCY_CODE = "currency_code"
     const val CURRENCY_SYMBOL = "currency_symbol"
@@ -27,10 +28,23 @@ object WalletPreference {
         editor.apply()
     }
 
-    fun getSharedPreference(context: Context, key: String): String {
+    fun setBooleanPreference(context: Context, key: String, value: Boolean) {
+        val sharedPreference = context.getSharedPreferences(WALLET_PREFERENCE, 0)
+        val editor = sharedPreference.edit()
+        editor.putBoolean(key, value)
+        editor.apply()
+    }
+
+    fun getStringPreference(context: Context, key: String): String {
         val sharedPreferences =
             context.getSharedPreferences(WALLET_PREFERENCE, Context.MODE_PRIVATE)
         return sharedPreferences.getString(key, "").toString()
+    }
+
+    fun getBooleanPreference(context: Context, key: String): Boolean {
+        val sharedPreferences =
+            context.getSharedPreferences(WALLET_PREFERENCE, Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean(key, true)
     }
 
 }

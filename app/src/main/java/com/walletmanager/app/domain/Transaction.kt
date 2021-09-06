@@ -18,10 +18,20 @@ data class Transaction(
     val year: Int,
     val categoryIcon: Int,
     val categoryColor: Int,
-    val createdDate: Date
+    val createdDate: Date,
 ) : Parcelable
 
 
-fun Transaction.asDbTransaction(): DbTransaction{
-    return DbTransaction(id, category, amount, title, date, type, month, year, categoryIcon, categoryColor, createdDate)
+fun Transaction.asDbTransaction(): DbTransaction {
+    return DbTransaction(id,
+        category,
+        amount,
+        title,
+        date,
+        type,
+        month,
+        year,
+        categoryIcon,
+        categoryColor,
+        createdDate)
 }

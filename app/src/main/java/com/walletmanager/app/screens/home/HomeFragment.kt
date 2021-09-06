@@ -4,20 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.walletmanager.app.R
 import com.walletmanager.app.adapters.RecentlyAddedAdapter
 import com.walletmanager.app.databinding.FragmentHomeBinding
 import com.walletmanager.app.database.WalletDatabase
-import com.walletmanager.app.screens.update.UpdateTransactionActivityArgs
+import com.walletmanager.app.utils.WalletPreference
 
-class HomeFragment: Fragment() {
+class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -26,19 +23,29 @@ class HomeFragment: Fragment() {
     private lateinit var walletDatabase: WalletDatabase
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         walletDatabase = context?.let { WalletDatabase.getInstance(it) }!!
-        val homeViewModelFactory = HomeViewModelFactory(walletDatabase.transactionDao, HomeRepository(walletDatabase.transactionDao))
+
+        val currency =
+            WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_SYMBOL)
+
+        val homeViewModelFactory = HomeViewModelFactory(walletDatabase.transactionDao,
+            HomeRepository(walletDatabase.transactionDao))
         homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val recentlyAddedAdapter = RecentlyAddedAdapter({
-            val homeFragmentDirections = HomeFragmentDirections.actionHomeFragmentToUpdateTransactionActivity(it)
+        val recentlyAddedAdapter = RecentlyAddedAdapter(currency) {
+            val homeFragmentDirections =
+                HomeFragmentDirections.actionHomeFragmentToUpdateTransactionActivity(it)
             findNavController().navigate(homeFragmentDirections)
-        })
+        }
 
         binding.listRecentlyAdded.adapter = recentlyAddedAdapter
 
@@ -47,7 +54,11 @@ class HomeFragment: Fragment() {
             homeViewModel.calculateAmount()
         })
 
-        homeViewModel.totalAmount.observe(viewLifecycleOwner, {totalAmount ->
+        binding.tvCurrency.text = currency
+        binding.tvIncomeCurrency.text = getString(R.string.set_currency, "+$currency")
+        binding.tvExpenseCurrency.text = getString(R.string.set_currency, "-$currency")
+
+        homeViewModel.totalAmount.observe(viewLifecycleOwner, { totalAmount ->
             binding.tvTotalAmountValue.text = totalAmount.toString()
         })
 
@@ -59,7 +70,7 @@ class HomeFragment: Fragment() {
             binding.tvTotalExpenseValue.text = totalExpense.toString()
         })
 
-        binding.buttonAddTransaction.setOnClickListener {view->
+        binding.buttonAddTransaction.setOnClickListener { view ->
             val action = HomeFragmentDirections.actionHomeFragmentToChooseTransactionSheetFragment()
             action.let {
                 view.findNavController().navigate(action)
@@ -67,7 +78,7 @@ class HomeFragment: Fragment() {
         }
 
         binding.tvRecentTransactionsSeeAll.setOnClickListener {
-          //  val action = Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_allTransactionFragment)
+            //  val action = Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_allTransactionFragment)
             findNavController().navigate(R.id.action_homeFragment_to_allTransactionFragment)
         }
 

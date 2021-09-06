@@ -7,12 +7,20 @@
         <variable
             name="transaction"
             type="com.walletmanager.app.domain.Transaction" />
+
+        <variable
+            name="currency"
+            type="String" />
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <RelativeLayout
             android:id="@+id/rl_category"
@@ -27,9 +35,9 @@
             <ImageView
                 android:id="@+id/image_view_category"
                 android:setCategoryImage="@{transaction.categoryIcon}"
-                android:layout_width="24dp"
+                android:layout_width="20dp"
                 app:tint="@color/white"
-                android:layout_height="24dp"
+                android:layout_height="20dp"
                 tools:src="@drawable/ic_apple_fruits" />
 
         </RelativeLayout>
@@ -59,34 +67,48 @@
             tools:text="20 July, 2020" />
 
         <TextView
-            android:id="@+id/tv_amount"
-            setTransactionAmount="@{transaction.amount}"
-            setTransactionColor="@{transaction.type}"
-            android:layout_width="0dp"
+            android:id="@+id/tv_currency"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="4dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_semibold"
+            setCurrency="@{currency}"
+            setTransactionSymbol="@{transaction.type}"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_amount"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_amount"
+            tools:text="+$" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            setAmount="@{transaction.amount}"
+            setColor="@{transaction.type}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:fontFamily="@font/nunito_semibold"
             android:gravity="end"
             android:textColor="@color/green"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_category"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="$24675" />
+            tools:text="2,000" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/nunito_semibold"
+            android:layout_marginTop="4dp"
             android:text="@{transaction.title}"
+            android:fontFamily="@font/nunito_semibold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@id/rl_category"
-            app:layout_constraintTop_toBottomOf="@+id/rl_category"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
             tools:text="Payment done at Kirana store" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

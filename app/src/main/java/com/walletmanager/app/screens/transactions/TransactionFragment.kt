@@ -5,26 +5,18 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.coroutineScope
-import androidx.navigation.NavAction
-import androidx.navigation.NavArgs
-import androidx.navigation.NavController
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.walletmanager.app.R
 import com.walletmanager.app.databinding.FragmentAllTransactionBinding
 import com.walletmanager.app.database.WalletDatabase
-import com.walletmanager.app.database.entities.DbTransaction
 import com.walletmanager.app.database.entities.asDomainTransaction
 import com.walletmanager.app.screens.delete.DeleteBottomSheetFragment
+import com.walletmanager.app.utils.WalletPreference
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -42,6 +34,9 @@ class TransactionFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_all_transaction, container, false)
 
+        val currency =
+            WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_SYMBOL)
+
         val walletDatabase = WalletDatabase.getInstance(requireContext())
 
         setHasOptionsMenu(true)
@@ -58,7 +53,7 @@ class TransactionFragment : Fragment() {
             transactionViewModelFactory).get(AllTransactionViewModel::class.java)
 
         val transactionAdapter =
-            AllTransactionAdapter { dbTransaction, action ->
+            AllTransactionAdapter(currency) { dbTransaction, action ->
                 if (action == "edit") {
                     val transactionFragmentDirections =
                         TransactionFragmentDirections.actionAllTransactionFragmentToUpdateTransactionActivity(
