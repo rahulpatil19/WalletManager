@@ -8,6 +8,8 @@
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/drawable/bg_category_circle_transaction.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/drawable/bg_category_create.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/drawable/bg_category_update.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.16574074074074074" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/drawable/ic_baseline_language_24.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/acitivity_update_transaction.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_add_transaction.xml" value="0.2" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_login.xml" value="0.17864583333333334" />
@@ -17,6 +19,7 @@
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_category.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_choose_transaction.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_delete.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_delete_all.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_select_date.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_all_transaction.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_category.xml" value="0.17864583333333334" />
@@ -25,8 +28,10 @@
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_about.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_currency.xml" value="0.15" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_wallet_filter.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_statistic.xml" value="0.16" />
-        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/layout_no_transaction.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_wallet.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/layout_no_transaction.xml" value="0.25" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_all_transaction.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_category.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_currency.xml" value="0.17864583333333334" />

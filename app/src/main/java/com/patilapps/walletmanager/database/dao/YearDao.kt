@@ -15,6 +15,9 @@ interface YearDao {
 
     @Update
     suspend fun updateTransactionYear(dbYear: DbYear)
+
+    @Query("DELETE FROM table_year")
+    suspend fun deleteAllYears()
 }
 
 

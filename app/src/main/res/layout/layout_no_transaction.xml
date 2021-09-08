@@ -3,28 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
+    android:padding="16dp"
     android:orientation="vertical"
     android:gravity="center"
     android:id="@+id/layout_no_transaction"
     android:layout_height="wrap_content">
 
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_width="72dp"
+        app:tint="@color/primary"
+        android:layout_height="72dp"
+        android:src="@drawable/empty_opened_wallet" />
 
     <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No transaction found" />
 
     <TextView
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click create to add a transaction" />
+        android:text="Press on CREATE to add a new transaction" />
 
 
 </LinearLayout>

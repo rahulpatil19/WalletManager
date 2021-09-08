@@ -50,9 +50,17 @@ class HomeFragment : Fragment() {
         binding.listRecentlyAdded.adapter = recentlyAddedAdapter
 
         homeViewModel.recentlyAddedList.observe(viewLifecycleOwner, {
-            recentlyAddedAdapter.submitList(it)
-            Log.d("Transaction List", it.toString())
-            homeViewModel.calculateAmount()
+            if (it.size > 0){
+                binding.layoutNoTransaction.visibility = View.GONE
+                binding.tvRecentTransactionsSeeAll.visibility = View.VISIBLE
+                recentlyAddedAdapter.submitList(it)
+                Log.d("Transaction List", it.toString())
+                homeViewModel.calculateAmount()
+            }
+            else{
+                binding.tvRecentTransactionsSeeAll.visibility = View.GONE
+                binding.layoutNoTransaction.visibility = View.VISIBLE
+            }
         })
 
         binding.tvCurrency.text = currency

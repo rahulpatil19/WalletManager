@@ -19,4 +19,6 @@ interface IncomeDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateIncome(dbIncome: DbIncome)
 
+    @Query("DELETE FROM table_income")
+    suspend fun deleteAllIncomes()
 }

@@ -60,6 +60,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:id="@+id/layout_settings_change_currency"
                     android:padding="16dp"
@@ -84,6 +85,32 @@
 
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_settings_delete_all"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_baseline_delete_24"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
+
+                    <TextView
+                        android:layout_marginStart="16dp"
+                        android:text="@string/text_delete_all_transactions"
+                        android:textColor="@color/black"
+                        android:layout_width="0dp"
+                        android:textSize="18sp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:padding="16dp"

@@ -15,4 +15,7 @@ interface ExpenseDao {
 
     @Query("SELECT * FROM table_expense")
     fun getAllExpense(): LiveData<List<DbExpense>>
+
+    @Query("DELETE FROM table_expense")
+    suspend fun deleteAllExpenses()
 }

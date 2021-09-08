@@ -17,9 +17,6 @@
             app:destination="@id/allTransactionFragment"
             app:launchSingleTop="true" />
         <action
-            android:id="@+id/action_homeFragment_to_walletFragment"
-            app:destination="@id/walletFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_statisticFragment"
             app:destination="@id/statisticFragment" />
         <action
@@ -61,14 +58,6 @@
             android:id="@+id/action_allTransactionFragment_to_updateTransactionActivity"
             app:destination="@id/updateTransactionActivity" />
 
-    </fragment>
-    <fragment
-        android:id="@+id/walletFragment"
-        android:name="com.patilapps.walletmanager.screens.wallet.WalletFragment"
-        android:label="WalletFragment">
-        <action
-            android:id="@+id/action_walletFragment_to_walletFilterSheetFragment"
-            app:destination="@id/walletFilterSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/statisticFragment"

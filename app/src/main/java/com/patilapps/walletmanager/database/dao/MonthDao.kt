@@ -15,6 +15,9 @@ interface MonthDao {
 
     @Query("SELECT * FROM TABLE_MONTH")
     fun getAllMonthWithYear(): LiveData<List<DbMonth>>
+
+    @Query("DELETE FROM table_month")
+    suspend fun deleteAllMonths()
 }
 
 fun List<DbMonth>.asFilterList(): List<String>{
