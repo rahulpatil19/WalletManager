@@ -7,7 +7,7 @@
 
         <variable
             name="statisticViewModel"
-            type="com.walletmanager.app.screens.statistic.StatisticViewModel" />
+            type="com.patilapps.walletmanager.screens.statistic.StatisticViewModel" />
 
     </data>
 
@@ -28,7 +28,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Wallet" />
+                app:title="@string/title_statistic" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -79,9 +79,9 @@
             app:layout_constraintTop_toBottomOf="@+id/layout_select_year">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_overview_title"
@@ -89,18 +89,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Spending Overview"
-                    android:textSize="18sp"
                     android:fontFamily="@font/nunito_bold"
-                    android:textColor="@color/black" />
+                    android:text="@string/title_spending_overview"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/statistic_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="240dp"/>
+                    android:layout_marginEnd="16dp" />
 
                 <TextView
                     android:id="@+id/tv_category_title"
@@ -108,19 +108,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Month Spending Overview"
-                    android:textSize="18sp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="@string/title_monthly_spendings"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/nunito_bold" />
+                    android:textSize="18sp" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_jan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"
                     app:cardCornerRadius="8dp"
-                    android:visibility="gone">
+                    app:cardElevation="8dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -132,7 +135,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="January"
+                            android:text="@string/january"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +146,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -159,7 +161,7 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            android:text="500"
+                            android:text="00"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_jan_title"
@@ -172,10 +174,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_jan_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_jan_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -195,7 +197,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -209,7 +211,7 @@
                                         android:id="@+id/tv_jan_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -217,9 +219,8 @@
                                         android:id="@+id/tv_jan_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        android:text="5765"
+                                        android:text="00"
                                         android:textColor="@color/black"
                                         android:textSize="20sp" />
 
@@ -251,7 +252,7 @@
                                         android:id="@+id/tv_jan_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -259,11 +260,10 @@
                                         android:id="@+id/tv_jan_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -274,10 +274,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_jan_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_jan_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -286,10 +286,12 @@
                     android:id="@+id/card_feb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_jan">
@@ -304,7 +306,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="Febuary"
+                            android:text="@string/february"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -331,12 +333,12 @@
                             android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_feb_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:text="00" />
 
                         <TextView
                             android:id="@+id/tv_feb_total_transactions"
@@ -344,10 +346,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_feb_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_feb_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -367,7 +369,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -381,7 +383,7 @@
                                         android:id="@+id/tv_feb_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -389,11 +391,10 @@
                                         android:id="@+id/tv_feb_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -409,7 +410,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -423,7 +424,7 @@
                                         android:id="@+id/tv_feb_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -431,11 +432,10 @@
                                         android:id="@+id/tv_feb_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -446,10 +446,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_feb_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_feb_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -458,10 +458,12 @@
                     android:id="@+id/card_mar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_feb">
@@ -476,7 +478,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="March"
+                            android:text="@string/march"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -487,7 +489,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -500,15 +501,14 @@
                             android:id="@+id/tv_mar_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_mar_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_mar_total_transactions"
@@ -516,10 +516,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_mar_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_mar_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -539,7 +539,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -553,7 +553,7 @@
                                         android:id="@+id/tv_mar_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -561,11 +561,10 @@
                                         android:id="@+id/tv_mar_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -581,7 +580,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -595,7 +594,7 @@
                                         android:id="@+id/tv_mar_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -603,11 +602,10 @@
                                         android:id="@+id/tv_mar_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -618,23 +616,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_mar_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_mar_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
-
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_apr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
-                    app:cardElevation="8dp"
                     app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_mar">
@@ -649,7 +648,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="April"
+                            android:text="@string/april"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -660,7 +659,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -673,15 +671,14 @@
                             android:id="@+id/tv_apr_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_apr_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_apr_total_transactions"
@@ -689,10 +686,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_apr_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_apr_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -712,7 +709,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -726,7 +723,7 @@
                                         android:id="@+id/tv_apr_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -734,11 +731,10 @@
                                         android:id="@+id/tv_apr_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -754,7 +750,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -768,7 +764,7 @@
                                         android:id="@+id/tv_apr_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -776,11 +772,10 @@
                                         android:id="@+id/tv_apr_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -791,10 +786,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_apr_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_apr_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -803,10 +798,12 @@
                     android:id="@+id/card_may"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_apr">
@@ -821,7 +818,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="May"
+                            android:text="@string/may"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -832,7 +829,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -845,15 +841,14 @@
                             android:id="@+id/tv_may_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_may_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_may_total_transactions"
@@ -861,10 +856,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_may_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_may_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -884,7 +879,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -898,7 +893,7 @@
                                         android:id="@+id/tv_may_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -906,11 +901,10 @@
                                         android:id="@+id/tv_may_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -926,7 +920,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -940,7 +934,7 @@
                                         android:id="@+id/tv_may_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -948,11 +942,10 @@
                                         android:id="@+id/tv_may_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -963,10 +956,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_may_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_may_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -975,10 +968,12 @@
                     android:id="@+id/card_jun"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_may">
@@ -993,7 +988,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="June"
+                            android:text="@string/june"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1004,7 +999,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -1017,15 +1011,14 @@
                             android:id="@+id/tv_jun_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_jun_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_jun_total_transactions"
@@ -1033,10 +1026,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_jun_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_jun_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -1056,7 +1049,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1070,7 +1063,7 @@
                                         android:id="@+id/tv_jun_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1078,11 +1071,10 @@
                                         android:id="@+id/tv_jun_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -1098,7 +1090,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1112,7 +1104,7 @@
                                         android:id="@+id/tv_jun_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1120,11 +1112,10 @@
                                         android:id="@+id/tv_jun_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -1135,10 +1126,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_jun_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_jun_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -1147,10 +1138,12 @@
                     android:id="@+id/card_jul"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_jun">
@@ -1165,7 +1158,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="July"
+                            android:text="@string/july"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1176,7 +1169,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -1190,15 +1182,14 @@
                             android:id="@+id/tv_jul_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_jul_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_jul_total_transactions"
@@ -1206,10 +1197,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_jul_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_jul_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -1229,7 +1220,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1243,7 +1234,7 @@
                                         android:id="@+id/tv_jul_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1251,11 +1242,10 @@
                                         android:id="@+id/tv_jul_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -1271,7 +1261,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1285,7 +1275,7 @@
                                         android:id="@+id/tv_jul_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1293,11 +1283,10 @@
                                         android:id="@+id/tv_jul_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -1308,10 +1297,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_jul_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_jul_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -1320,10 +1309,12 @@
                     android:id="@+id/card_aug"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_jun">
@@ -1338,7 +1329,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="August"
+                            android:text="@string/august"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1349,7 +1340,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -1363,15 +1353,14 @@
                             android:id="@+id/tv_aug_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_aug_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_aug_total_transactions"
@@ -1379,10 +1368,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_aug_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_aug_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -1402,7 +1391,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1416,7 +1405,7 @@
                                         android:id="@+id/tv_aug_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1424,11 +1413,10 @@
                                         android:id="@+id/tv_aug_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -1444,7 +1432,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1458,7 +1446,7 @@
                                         android:id="@+id/tv_aug_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1466,11 +1454,10 @@
                                         android:id="@+id/tv_aug_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -1481,10 +1468,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_aug_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_aug_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -1493,10 +1480,12 @@
                     android:id="@+id/card_sep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_aug">
@@ -1511,7 +1500,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="September"
+                            android:text="@string/september"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1522,7 +1511,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -1536,15 +1524,14 @@
                             android:id="@+id/tv_sep_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_sep_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_sep_total_transactions"
@@ -1552,10 +1539,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_sep_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_sep_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -1575,7 +1562,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1589,7 +1576,7 @@
                                         android:id="@+id/tv_sep_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1597,11 +1584,10 @@
                                         android:id="@+id/tv_sep_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -1617,7 +1603,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1631,7 +1617,7 @@
                                         android:id="@+id/tv_sep_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1639,11 +1625,10 @@
                                         android:id="@+id/tv_sep_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -1654,10 +1639,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_sep_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_sep_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -1666,10 +1651,12 @@
                     android:id="@+id/card_oct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_sep">
@@ -1684,7 +1671,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="October"
+                            android:text="@string/october"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1695,7 +1682,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -1704,20 +1690,18 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:text="$" />
 
-
                         <TextView
                             android:id="@+id/tv_oct_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_oct_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_oct_total_transactions"
@@ -1725,10 +1709,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_oct_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_oct_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -1748,7 +1732,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1762,7 +1746,7 @@
                                         android:id="@+id/tv_oct_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1770,11 +1754,10 @@
                                         android:id="@+id/tv_oct_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -1790,7 +1773,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1804,7 +1787,7 @@
                                         android:id="@+id/tv_oct_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1812,11 +1795,10 @@
                                         android:id="@+id/tv_oct_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -1827,10 +1809,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_oct_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_oct_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -1839,10 +1821,12 @@
                     android:id="@+id/card_nov"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_oct">
@@ -1857,7 +1841,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="November"
+                            android:text="@string/november"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1868,7 +1852,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -1881,15 +1864,14 @@
                             android:id="@+id/tv_nov_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_nov_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_nov_total_transactions"
@@ -1897,10 +1879,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_nov_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_nov_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -1920,7 +1902,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1934,7 +1916,7 @@
                                         android:id="@+id/tv_nov_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1942,11 +1924,10 @@
                                         android:id="@+id/tv_nov_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -1962,7 +1943,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -1976,7 +1957,7 @@
                                         android:id="@+id/tv_nov_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -1984,11 +1965,10 @@
                                         android:id="@+id/tv_nov_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -1999,10 +1979,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_nov_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_nov_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -2011,10 +1991,12 @@
                     android:id="@+id/card_dec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:visibility="gone"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/card_nov">
@@ -2029,7 +2011,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
-                            android:text="December"
+                            android:text="@string/december"
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -2040,7 +2022,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:layout_marginEnd="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -2053,15 +2034,14 @@
                             android:id="@+id/tv_dec_amount"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
                             android:fontFamily="@font/nunito_semibold"
                             android:gravity="end"
-                            tools:text="$24675"
                             android:textColor="@color/primary"
                             android:textSize="20sp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_dec_title"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="$24675" />
 
                         <TextView
                             android:id="@+id/tv_dec_total_transactions"
@@ -2069,10 +2049,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito_semibold"
-                            tools:text="4 Transactions"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_dec_amount" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_dec_amount"
+                            tools:text="4 Transactions" />
 
 
                         <LinearLayout
@@ -2092,7 +2072,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Income"
+                                    android:text="@string/income"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -2106,7 +2086,7 @@
                                         android:id="@+id/tv_dec_income_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -2114,11 +2094,10 @@
                                         android:id="@+id/tv_dec_total_income_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="5765"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="5765" />
 
                                 </LinearLayout>
 
@@ -2134,7 +2113,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Expense"
+                                    android:text="@string/expense"
                                     android:textSize="16sp" />
 
                                 <LinearLayout
@@ -2148,7 +2127,7 @@
                                         android:id="@+id/tv_dec_expense_currency"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="$"
+                                        tools:text="$"
                                         android:textColor="@color/black"
                                         android:textSize="12sp" />
 
@@ -2156,11 +2135,10 @@
                                         android:id="@+id/tv_dec_total_expense_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="4dp"
                                         android:fontFamily="@font/nunito_semibold"
-                                        tools:text="2000"
                                         android:textColor="@color/black"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        tools:text="2000" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -2171,13 +2149,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            tools:text="Last Added - 02 May, 2012,    View all transactions..."
                             android:textSize="12sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_dec_transactions" />
+                            app:layout_constraintTop_toBottomOf="@+id/layout_dec_transactions"
+                            tools:text="Last Added - 02 May, 2012,    View all transactions..." />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
+
             </LinearLayout>
         </ScrollView>
 

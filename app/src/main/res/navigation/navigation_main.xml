@@ -7,14 +7,15 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.walletmanager.app.screens.home.HomeFragment"
+        android:name="com.patilapps.walletmanager.screens.home.HomeFragment"
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_chooseTransactionSheetFragment"
             app:destination="@id/chooseTransactionSheetFragment" />
         <action
             android:id="@+id/action_homeFragment_to_allTransactionFragment"
-            app:destination="@id/allTransactionFragment" />
+            app:destination="@id/allTransactionFragment"
+            app:launchSingleTop="true" />
         <action
             android:id="@+id/action_homeFragment_to_walletFragment"
             app:destination="@id/walletFragment" />
@@ -31,7 +32,7 @@
 
     <activity
         android:id="@+id/transactionActivity"
-        android:name="com.walletmanager.app.screens.create.AddTransactionActivity"
+        android:name="com.patilapps.walletmanager.screens.create.AddTransactionActivity"
         android:label="activity_transaction"
         tools:layout="@layout/activity_add_transaction">
         <argument
@@ -41,7 +42,7 @@
     </activity>
     <dialog
         android:id="@+id/chooseTransactionSheetFragment"
-        android:name="com.walletmanager.app.screens.home.ChooseTransactionSheetFragment"
+        android:name="com.patilapps.walletmanager.screens.home.ChooseTransactionSheetFragment"
         android:label="ChooseTransactionSheetFragment" >
         <action
             android:id="@+id/action_chooseTransactionSheetFragment_to_transactionActivity"
@@ -51,7 +52,7 @@
     <fragment
         android:id="@+id/allTransactionFragment"
         tools:layout="@layout/fragment_all_transaction"
-        android:name="com.walletmanager.app.screens.transactions.TransactionFragment"
+        android:name="com.patilapps.walletmanager.screens.transactions.TransactionFragment"
         android:label="AllTransactionFragment" >
         <action
             android:id="@+id/action_allTransactionFragment_to_monthDataFragment"
@@ -59,14 +60,11 @@
         <action
             android:id="@+id/action_allTransactionFragment_to_updateTransactionActivity"
             app:destination="@id/updateTransactionActivity" />
-        <action
-            android:id="@+id/action_allTransactionFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/walletFragment"
-        android:name="com.walletmanager.app.screens.wallet.WalletFragment"
+        android:name="com.patilapps.walletmanager.screens.wallet.WalletFragment"
         android:label="WalletFragment">
         <action
             android:id="@+id/action_walletFragment_to_walletFilterSheetFragment"
@@ -74,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/statisticFragment"
-        android:name="com.walletmanager.app.screens.statistic.StatisticFragment"
+        android:name="com.patilapps.walletmanager.screens.statistic.StatisticFragment"
         android:label="StatisticFragment" >
         <action
             android:id="@+id/action_statisticFragment_to_monthDataFragment"
@@ -82,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/monthDataFragment"
-        android:name="com.walletmanager.app.screens.monthlydata.MonthDataFragment"
+        android:name="com.patilapps.walletmanager.screens.monthlydata.MonthDataFragment"
         android:label="MonthDataFragment" >
         <argument
             android:name="month"
@@ -102,10 +100,13 @@
         <argument
             android:name="totalTransaction"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_monthDataFragment_to_updateTransactionActivity"
+            app:destination="@id/updateTransactionActivity" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.walletmanager.app.screens.settings.SettingsFragment"
+        android:name="com.patilapps.walletmanager.screens.settings.SettingsFragment"
         android:label="SettingsFragment" >
         <action
             android:id="@+id/action_settingsFragment_to_aboutSheetFragment"
@@ -116,19 +117,19 @@
     </fragment>
     <dialog
         android:id="@+id/aboutSheetFragment"
-        android:name="com.walletmanager.app.screens.settings.AboutSheetFragment"
+        android:name="com.patilapps.walletmanager.screens.settings.AboutSheetFragment"
         android:label="AboutSheetFragment" />
     <fragment
         android:id="@+id/currencySheetFragment"
-        android:name="com.walletmanager.app.screens.settings.CurrencySheetFragment"
+        android:name="com.patilapps.walletmanager.screens.settings.CurrencySheetFragment"
         android:label="CurrencySheetFragment" />
     <activity
         android:id="@+id/updateTransactionActivity"
-        android:name="com.walletmanager.app.screens.update.UpdateTransactionActivity"
+        android:name="com.patilapps.walletmanager.screens.update.UpdateTransactionActivity"
         android:label="UpdateTransactionActivity" >
         <argument
             android:name="transaction"
-            app:argType="com.walletmanager.app.domain.Transaction" />
+            app:argType="com.patilapps.walletmanager.domain.Transaction" />
     </activity>
 
 

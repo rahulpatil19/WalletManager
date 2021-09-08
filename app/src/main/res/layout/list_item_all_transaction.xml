@@ -6,7 +6,7 @@
     <data>
         <variable
             name="transaction"
-            type="com.walletmanager.app.database.entities.DbTransaction" />
+            type="com.patilapps.walletmanager.database.entities.DbTransaction" />
 
         <variable
             name="currency"
@@ -26,7 +26,7 @@
             setCategoryBackgroundColor="@{transaction.categoryColor}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_category_circle_blank"
+            android:background="@drawable/bg_category_circle_transaction"
             android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -72,7 +72,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="4dp"
             android:fontFamily="@font/nunito_semibold"
             android:textColor="@color/black"
             android:textSize="14sp"

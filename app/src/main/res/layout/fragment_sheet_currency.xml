@@ -23,10 +23,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_currency"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_height="0dp"
+        android:paddingBottom="8dp"
         android:orientation="vertical"
-        android:paddingBottom="32dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +35,9 @@
         android:id="@+id/button_currency_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@id/tv_currency_title"
+        app:backgroundTint="@color/primary"
         android:text="@string/button_close"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_currency_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

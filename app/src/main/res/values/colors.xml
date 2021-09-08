@@ -3,12 +3,13 @@
 
     <color name="background_blue">#1F1E30</color>
 
-    <color name="background_color">#F2EEF0</color>
+    <color name="background_color">#F7F4F5</color>
     <!--  <color name="blue_20">#2C5AC2</color>
       <color name="blue_30">#305EC7</color>
       <color name="blue_40">#4C78DB</color>-->
 
-    <color name="primary">#192226</color>
+    <color name="secondary">#00EE65</color>
+    <color name="primary">#01859A</color>
     <color name="green">#2DC858</color>
     <color name="yellow_one">#FFD343</color>
     <color name="yellow_two">#FFBF00</color>
@@ -37,6 +38,7 @@
     <color name="surface_color">#FAF9F9</color>
 
     <!-- CATEGORIES COLOR -->
+
 
     <color name="dark_slate_gray">#2F4F4F</color>
     <color name="dim_gray">#696969</color>

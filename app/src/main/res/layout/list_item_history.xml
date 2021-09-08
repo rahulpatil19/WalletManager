@@ -7,7 +7,7 @@
 
         <variable
             name="transaction"
-            type="com.walletmanager.app.database.entities.DbTransaction" />
+            type="com.patilapps.walletmanager.database.entities.DbTransaction" />
 
         <variable
             name="currency"

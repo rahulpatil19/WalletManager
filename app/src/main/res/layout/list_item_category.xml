@@ -7,7 +7,7 @@
 
         <variable
             name="category"
-            type="com.walletmanager.app.domain.Category" />
+            type="com.patilapps.walletmanager.domain.Category" />
 
     </data>
 

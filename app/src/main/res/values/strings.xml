@@ -58,6 +58,21 @@
     <string name="title_update_expense">Update Expense</string>
     <string name="title_month_transaction">Monthly Transactions</string>
     <string name="create">Create</string>
+    <string name="title_spending_overview">Spending Overview</string>
+    <string name="title_by_month">By Month</string>
+    <string name="title_monthly_spendings">Monthly Spending</string>
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
 
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->
