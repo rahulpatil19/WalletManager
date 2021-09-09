@@ -10,11 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.database.WalletDatabase
+import com.patilapps.walletmanager.database.entities.DbTransaction
 import com.patilapps.walletmanager.databinding.FragmentMonthDataBinding
 import com.patilapps.walletmanager.screens.delete.DeleteBottomSheetFragment
 import com.patilapps.walletmanager.utils.WalletPreference
 
-class MonthDataFragment : Fragment() {
+class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListener {
 
     private lateinit var binding: FragmentMonthDataBinding
 
@@ -64,7 +65,6 @@ class MonthDataFragment : Fragment() {
         viewModel = ViewModelProvider(this.viewModelStore,
             viewModelFactory).get(MonthDataViewModel::class.java)
 
-
         val monthDataAdapter = MonthDataAdapter(currency) { transaction, action ->
             if (action == "edit") {
                 val navDirections =
@@ -77,6 +77,7 @@ class MonthDataFragment : Fragment() {
                 fragment.show(fragmentManager, "delete")
             }
         }
+
         binding.listMonth.adapter = monthDataAdapter
 
         viewModel.transactionList.observe(this.viewLifecycleOwner, {
@@ -99,6 +100,27 @@ class MonthDataFragment : Fragment() {
             binding.tvMonthTotalTransaction.text = "$totalTransactions transaction"
         } else {
             binding.tvMonthTotalTransaction.text = "$totalTransactions transactions"
+        }
+    }
+
+    override fun onTransactionDelete(transaction: DbTransaction) {
+        val type = transaction.type
+        val amount = transaction.amount
+
+        val previousTotalAmount = binding.tvTotalAmountValue.text.toString().toLong()
+
+        val newTotalAmount = previousTotalAmount.minus(amount)
+        binding.tvTotalAmountValue.text = newTotalAmount.toString()
+
+        if (type == "income"){
+            val previousIncomeAmount = binding.tvTotalIncomeValue.text.toString().toLong()
+            val newIncomeAmount = previousIncomeAmount.minus(amount)
+            binding.tvTotalIncomeValue.text = "$newIncomeAmount"
+        }
+        else if(type == "expense"){
+            val previousExpenseAmount = binding.tvTotalExpenseValue.text.toString().toLong()
+            val newExpenseAmount = previousExpenseAmount.minus(amount)
+            binding.tvTotalIncomeValue.text = "$newExpenseAmount"
         }
     }
 

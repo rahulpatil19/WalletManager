@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.WalletManager" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    <style name="Theme.WalletManager" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
@@ -16,7 +16,5 @@
 
         <item name="android:colorBackground">@color/background_color</item>
     </style>
-
-
 
 </resources>

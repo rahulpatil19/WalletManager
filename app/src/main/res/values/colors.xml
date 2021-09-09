@@ -10,11 +10,13 @@
 
     <color name="secondary">#00EE65</color>
     <color name="primary">#01859A</color>
+    <color name="primary_variant">#263C50</color>
+    <color name="primary_light">#AB94C4</color>
+
     <color name="green">#2DC858</color>
     <color name="yellow_one">#FFD343</color>
     <color name="yellow_two">#FFBF00</color>
-    <color name="primary_variant">#341D3E</color>
-    <color name="primary_light">#AB94C4</color>
+
     <color name="gray_one">#EEEAF4</color>
     <color name="gray_two">#F6F3F9</color>
     <color name="black">#FF000000</color>
