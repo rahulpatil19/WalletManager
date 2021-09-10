@@ -6,14 +6,16 @@ import androidx.lifecycle.*
 import com.github.mikephil.charting.data.PieEntry
 import com.patilapps.walletmanager.database.dao.TransactionDao
 import com.patilapps.walletmanager.database.dao.YearDao
+import com.patilapps.walletmanager.domain.Statistics
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+
 class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDao) : ViewModel() {
 
-
-    var totalIncome: Double = 0.0
-    var totalExpense: Double = 0.0
+    private var _statisticsList = MutableLiveData<List<Statistics>>()
+    val statisticsList: LiveData<List<Statistics>>
+        get() = _statisticsList
 
     private var _entryList = MutableLiveData<List<PieEntry>>()
     val entryList: LiveData<List<PieEntry>>
@@ -23,122 +25,87 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
     val currentYear: LiveData<Int>
         get() = _currentYear
 
-    private var _janTotalTransaction = MutableLiveData<Int>()
-    val janTotalTransaction: LiveData<Int>
-        get() = _janTotalTransaction
+    var totalIncome: Double = 0.0
+    var totalExpense: Double = 0.0
 
+    var janTotalTransaction: Int = 0
     var janTotalAmount: Long = 0
     var janExpense: Long = 0
     var janIncome: Long = 0
     var janLastModified: String = ""
 
-    private var _febTotalTransaction = MutableLiveData<Int>()
-    val febTotalTransaction: LiveData<Int>
-        get() = _febTotalTransaction
-
+    var febTotalTransaction: Int = 0
     var febTotalAmount: Long = 0
     var febExpense: Long = 0
     var febIncome: Long = 0
     var febLastModified: String = ""
 
-    private var _marTotalTransaction = MutableLiveData<Int>()
-    val marTotalTransaction: LiveData<Int>
-        get() = _marTotalTransaction
-
+    var marTotalTransaction: Int = 0
     var marTotalAmount: Long = 0
     var marExpense: Long = 0
     var marIncome: Long = 0
     var marLastModified: String = ""
 
-    private var _aprTotalTransaction = MutableLiveData<Int>()
-    val aprTotalTransaction: LiveData<Int>
-        get() = _aprTotalTransaction
-
+    var aprTotalTransaction: Int = 0
     var aprTotalAmount: Long = 0
     var aprExpense: Long = 0
     var aprIncome: Long = 0
     var aprLastModified: String = ""
 
-    private var _mayTotalTransaction = MutableLiveData<Int>()
-    val mayTotalTransaction: LiveData<Int>
-        get() = _mayTotalTransaction
-
+    var mayTotalTransaction: Int = 0
     var mayTotalAmount: Long = 0
     var mayExpense: Long = 0
     var mayIncome: Long = 0
     var mayLastModified: String = ""
 
-    private var _junTotalTransaction = MutableLiveData<Int>()
-    val junTotalTransaction: LiveData<Int>
-        get() = _junTotalTransaction
-
+    var junTotalTransaction: Int = 0
     var junTotalAmount: Long = 0
     var junExpense: Long = 0
     var junIncome: Long = 0
     var junLastModified: String = ""
 
-    private var _julTotalTransaction = MutableLiveData<Int>()
-    val julTotalTransaction: LiveData<Int>
-        get() = _julTotalTransaction
-
+    var julTotalTransaction: Int = 0
     var julTotalAmount: Long = 0
     var julExpense: Long = 0
     var julIncome: Long = 0
     var julLastModified: String = ""
 
-    private var _augTotalTransaction = MutableLiveData<Int>()
-    val augTotalTransaction: LiveData<Int>
-        get() = _augTotalTransaction
-
+    var augTotalTransaction: Int = 0
     var augTotalAmount: Long = 0
     var augExpense: Long = 0
     var augIncome: Long = 0
     var augLastModified: String = ""
 
-    private var _sepTotalTransaction = MutableLiveData<Int>()
-    val sepTotalTransaction: LiveData<Int>
-        get() = _sepTotalTransaction
-
+    var sepTotalTransaction: Int = 0
     var sepTotalAmount: Long = 0
     var sepExpense: Long = 0
     var sepIncome: Long = 0
     var sepLastModified: String = ""
 
-    private var _octTotalTransaction = MutableLiveData<Int>()
-    val octTotalTransaction: LiveData<Int>
-        get() = _octTotalTransaction
-
+    var octTotalTransaction: Int = 0
     var octTotalAmount: Long = 0
     var octExpense: Long = 0
     var octIncome: Long = 0
     var octLastModified: String = ""
 
-    private var _novTotalTransaction = MutableLiveData<Int>()
-    val novTotalTransaction: LiveData<Int>
-        get() = _novTotalTransaction
-
+    var novTotalTransaction: Int = 0
     var novTotalAmount: Long = 0
     var novExpense: Long = 0
     var novIncome: Long = 0
     var novLastModified: String = ""
 
-    private var _decTotalTransaction = MutableLiveData<Int>()
-    val decTotalTransaction: LiveData<Int>
-        get() = _decTotalTransaction
-
+    var decTotalTransaction: Int = 0
     var decTotalAmount: Long = 0
     var decExpense: Long = 0
     var decIncome: Long = 0
     var decLastModified: String = ""
-
 
     init {
         _currentYear.value = 2021
         resetValues()
     }
 
-   // cd Users\SCEA\AppData\Local\Android\sdk
-
+    // cd Users\SCEA\AppData\Local\Android\sdk
 
     fun getAllTransactionFromYear(year: Int) {
         resetValues()
@@ -148,6 +115,7 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                 Log.d("Selected year", year.toString())
                 it.let {
                     for (transaction in it) {
+
                         if (transaction.type == "income") {
                             totalIncome = totalIncome.plus(transaction.amount)
                         } else if (transaction.type == "expense") {
@@ -161,9 +129,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     janExpense = janExpense.plus(transaction.amount)
                                 }
+                                janTotalTransaction = janTotalTransaction.plus(1)
                                 janLastModified = transaction.date.toString()
                                 janTotalAmount = janTotalAmount.plus(transaction.amount)
-                                _janTotalTransaction.value = _janTotalTransaction.value?.plus(1)
                                 Log.d("Jan TotalAmount:", janTotalAmount.toString())
                             }
                             "Feb" -> {
@@ -172,9 +140,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     febExpense = febExpense.plus(transaction.amount)
                                 }
+                                febTotalTransaction = febTotalTransaction.plus(1)
                                 febLastModified = transaction.date.toString()
                                 febTotalAmount = febTotalAmount.plus(transaction.amount)
-                                _febTotalTransaction.value = _febTotalTransaction.value?.plus(1)
                             }
 
                             "Mar" -> {
@@ -183,10 +151,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     marExpense = marExpense.plus(transaction.amount)
                                 }
+                                marTotalTransaction = marTotalTransaction.plus(1)
                                 marLastModified = transaction.date.toString()
                                 marTotalAmount = marTotalAmount.plus(transaction.amount)
-                                _marTotalTransaction.value = _marTotalTransaction.value?.plus(1)
-
                             }
 
                             "Apr" -> {
@@ -195,10 +162,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     aprExpense = aprExpense.plus(transaction.amount)
                                 }
+                                aprTotalTransaction = aprTotalTransaction.plus(1)
                                 aprLastModified = transaction.date.toString()
                                 aprTotalAmount = aprTotalAmount.plus(transaction.amount)
-                                _aprTotalTransaction.value = _aprTotalTransaction.value?.plus(1)
-
                             }
 
                             "May" -> {
@@ -207,10 +173,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     mayExpense = mayExpense.plus(transaction.amount)
                                 }
+                                mayTotalTransaction = mayTotalTransaction.plus(1)
                                 mayLastModified = transaction.date.toString()
                                 mayTotalAmount = mayTotalAmount.plus(transaction.amount)
-                                _mayTotalTransaction.value = _mayTotalTransaction.value?.plus(1)
-
                             }
 
                             "Jun" -> {
@@ -219,10 +184,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     junExpense = junExpense.plus(transaction.amount)
                                 }
+                                junTotalTransaction = junTotalTransaction.plus(1)
                                 junLastModified = transaction.date.toString()
                                 junTotalAmount = junTotalAmount.plus(transaction.amount)
-                                _junTotalTransaction.value = _junTotalTransaction.value?.plus(1)
-
                             }
 
                             "Jul" -> {
@@ -231,10 +195,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     julExpense = julExpense.plus(transaction.amount)
                                 }
+                                julTotalTransaction = julTotalTransaction.plus(1)
                                 julLastModified = transaction.date.toString()
                                 julTotalAmount = junTotalAmount.plus(transaction.amount)
-                                _julTotalTransaction.value = _julTotalTransaction.value?.plus(1)
-
                             }
 
                             "Aug" -> {
@@ -243,10 +206,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     augExpense = augExpense.plus(transaction.amount)
                                 }
+                                augTotalTransaction = augTotalTransaction.plus(1)
                                 augLastModified = transaction.date.toString()
                                 augTotalAmount = augTotalAmount.plus(transaction.amount)
-                                _augTotalTransaction.value = _augTotalTransaction.value?.plus(1)
-
                             }
 
                             "Sep" -> {
@@ -255,10 +217,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     sepExpense = sepExpense.plus(transaction.amount)
                                 }
+                                sepTotalTransaction = sepTotalTransaction.plus(1)
                                 sepLastModified = transaction.date.toString()
                                 sepTotalAmount = sepTotalAmount.plus(transaction.amount)
-                                _sepTotalTransaction.value = _sepTotalTransaction.value?.plus(1)
-
                             }
 
                             "Oct" -> {
@@ -267,10 +228,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     octExpense = octExpense.plus(transaction.amount)
                                 }
+                                octTotalTransaction = octTotalTransaction.plus(1)
                                 octLastModified = transaction.date.toString()
                                 octTotalAmount = octTotalAmount.plus(transaction.amount)
-                                _octTotalTransaction.value = _octTotalTransaction.value?.plus(1)
-
                             }
 
                             "Nov" -> {
@@ -279,9 +239,9 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     novExpense = novExpense.plus(transaction.amount)
                                 }
+                                novTotalTransaction = novTotalTransaction.plus(1)
                                 novLastModified = transaction.date.toString()
                                 novTotalAmount = novTotalAmount.plus(transaction.amount)
-                                _novTotalTransaction.value = _novTotalTransaction.value?.plus(1)
 
                             }
 
@@ -291,57 +251,180 @@ class StatisticViewModel(val transactionDao: TransactionDao, val yearDao: YearDa
                                 } else if (transaction.type == "expense") {
                                     decExpense = decExpense.plus(transaction.amount)
                                 }
+                                decTotalTransaction = decTotalTransaction.plus(1)
                                 decLastModified = transaction.date.toString()
                                 decTotalAmount = decTotalAmount.plus(transaction.amount)
-                                _decTotalTransaction.value = _decTotalTransaction.value?.plus(1)
                             }
                         }
                     }
 
+                    createStatisticsList()
+
                     val totalAmount = totalIncome.plus(totalExpense)
-                    Log.d("Total amount", totalAmount.toString())
 
-                    if (totalAmount > 0){
-                        val incomePercent  = totalIncome.times(100).div(totalAmount)
-                        val expensePercent  = totalExpense.times(100).div(totalAmount)
-
-                        Log.d("Total Income", totalIncome.toString())
-                        Log.d("Total Expense", totalExpense.toString())
-
-                        Log.d("Income Percent", incomePercent.toString())
-                        Log.d("Expense Percent", expensePercent.toString())
+                    if (totalAmount > 0) {
+                        val incomePercent = totalIncome.times(100).div(totalAmount)
+                        val expensePercent = totalExpense.times(100).div(totalAmount)
 
                         // PieChart entries
                         val incomeEntry = PieEntry(incomePercent.toFloat(), "Income")
                         val expenseEntry = PieEntry(expensePercent.toFloat(), "Expense")
                         val entryList = listOf(incomeEntry, expenseEntry)
 
-                        Log.d("Entry list", entryList.toString())
-
                         _entryList.value = entryList
-                    }
-                    else{
+                    } else {
+                        _statisticsList.value = listOf()
                         _entryList.value = listOf()
                     }
                 }
             }
         }
+    }
+
+    fun createStatisticsList() {
+        val list = mutableListOf<Statistics>()
+        if (janTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "January",
+                    janTotalAmount,
+                    janIncome,
+                    janExpense,
+                    janTotalTransaction,
+                    janLastModified
+                ))
+        }
+
+        if (febTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "February",
+                    febTotalAmount,
+                    febIncome,
+                    febExpense,
+                    febTotalTransaction,
+                    febLastModified
+                ))
+        }
+
+        if (marTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "March",
+                    marTotalAmount,
+                    marIncome,
+                    marExpense,
+                    marTotalTransaction,
+                    marLastModified
+                ))
+        }
+
+        if (aprTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "April",
+                    aprTotalAmount,
+                    aprIncome,
+                    aprExpense,
+                    aprTotalTransaction,
+                    aprLastModified
+                ))
+        }
+        if (mayTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "May",
+                    mayTotalAmount,
+                    mayIncome,
+                    mayExpense,
+                    mayTotalTransaction,
+                    mayLastModified
+                ))
+        }
+        if (junTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "June",
+                    junTotalAmount,
+                    junIncome,
+                    junExpense,
+                    junTotalTransaction,
+                    junLastModified
+                ))
+        }
+        if (julTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "July",
+                    julTotalAmount,
+                    julIncome,
+                    julExpense,
+                    julTotalTransaction,
+                    julLastModified
+                ))
+        }
+        if (augTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "August",
+                    augTotalAmount,
+                    augIncome,
+                    augExpense,
+                    augTotalTransaction,
+                    augLastModified
+                ))
+        }
+        if (sepTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "September",
+                    sepTotalAmount,
+                    sepIncome,
+                    sepExpense,
+                    sepTotalTransaction,
+                    sepLastModified
+                ))
+        }
+        if (octTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "October",
+                    octTotalAmount,
+                    octIncome,
+                    octExpense,
+                    octTotalTransaction,
+                    octLastModified
+                ))
+        }
+        if (novTotalTransaction > 0) {
+            list.add(0,
+                Statistics(
+                    "November",
+                    novTotalAmount,
+                    novIncome,
+                    novExpense,
+                    novTotalTransaction,
+                    novLastModified
+                ))
+        }
+
+        _statisticsList.value = list
 
     }
 
-    fun resetValues() {
-        _janTotalTransaction.value = 0
-        _febTotalTransaction.value = 0
-        _marTotalTransaction.value = 0
-        _aprTotalTransaction.value = 0
-        _mayTotalTransaction.value = 0
-        _junTotalTransaction.value = 0
-        _julTotalTransaction.value = 0
-        _augTotalTransaction.value = 0
-        _sepTotalTransaction.value = 0
-        _octTotalTransaction.value = 0
-        _novTotalTransaction.value = 0
-        _decTotalTransaction.value = 0
+    private fun resetValues() {
+        janTotalTransaction = 0
+        febTotalTransaction = 0
+        marTotalTransaction = 0
+        aprTotalTransaction = 0
+        mayTotalTransaction = 0
+        junTotalTransaction = 0
+        julTotalTransaction = 0
+        augTotalTransaction = 0
+        sepTotalTransaction = 0
+        octTotalTransaction = 0
+        novTotalTransaction = 0
+        decTotalTransaction = 0
 
         totalIncome = 0.0
         totalExpense = 0.0

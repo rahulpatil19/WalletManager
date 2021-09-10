@@ -12,7 +12,7 @@ interface TransactionDao {
     suspend fun insertTransaction(dbTransaction: DbTransaction)
 
     // using this at home screen to get 10 recent transactions
-    @Query("SELECT * FROM table_all_transaction ORDER BY date")
+    @Query("SELECT * FROM table_all_transaction ORDER BY date LIMIT 10")
     fun getTenRecentTransactions(): Flow<List<DbTransaction>>
 
     // default query to get all the transaction by page

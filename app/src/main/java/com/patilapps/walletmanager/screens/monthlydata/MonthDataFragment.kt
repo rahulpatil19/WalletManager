@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.database.WalletDatabase
 import com.patilapps.walletmanager.database.entities.DbTransaction
+import com.patilapps.walletmanager.database.entities.DbYear
 import com.patilapps.walletmanager.databinding.FragmentMonthDataBinding
 import com.patilapps.walletmanager.screens.delete.DeleteBottomSheetFragment
 import com.patilapps.walletmanager.utils.WalletPreference
@@ -41,23 +42,20 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         val currency =
             WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_SYMBOL)
 
-        val month = navArgs.month
+        val statistic = navArgs.statistic
+
+        val month = statistic.month
         val year = navArgs.year
-        val totalAmount = navArgs.totalAmount
-        val totalTransactions = navArgs.totalTransaction
-        val income = navArgs.income
-        val expense = navArgs.expense
+        val totalAmount = statistic.totalAmount
+        val totalTransactions = statistic.totalTransactions
+        val income = statistic.totalIncome
+        val expense = statistic.totalExpense
 
-        binding.tvMonthAndYear.text = "$month, $year"
-        binding.tvCurrency.text = currency
-        binding.tvTotalIncomeCurrency.text = getString(R.string.set_currency, "+$currency")
-        binding.tvTotalExpenseCurrency.text = getString(R.string.set_currency, "-$currency")
-
-        initializeData(totalAmount, income, expense, totalTransactions)
+        initializeData(totalAmount, income, expense, totalTransactions, currency, year, month)
 
         val walletDatabase = WalletDatabase.getInstance(requireContext())
 
-        val viewModelFactory = MonthDataViewModelFactory(month,
+        val viewModelFactory = MonthDataViewModelFactory(month.take(3),
             year,
             walletDatabase.transactionDao,
             activity!!.application)
@@ -92,10 +90,19 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         income: Long,
         expense: Long,
         totalTransactions: Int,
+        currency: String,
+        year: Int,
+        month: String
     ) {
         binding.tvTotalAmountValue.text = totalAmount.toString()
         binding.tvTotalIncomeValue.text = income.toString()
         binding.tvTotalExpenseValue.text = expense.toString()
+
+        binding.tvMonthAndYear.text = "$month, $year"
+        binding.tvCurrency.text = currency
+        binding.tvTotalIncomeCurrency.text = currency
+        binding.tvTotalExpenseCurrency.text = currency
+
         if (totalTransactions == 1) {
             binding.tvMonthTotalTransaction.text = "$totalTransactions transaction"
         } else {
@@ -120,7 +127,7 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         else if(type == "expense"){
             val previousExpenseAmount = binding.tvTotalExpenseValue.text.toString().toLong()
             val newExpenseAmount = previousExpenseAmount.minus(amount)
-            binding.tvTotalIncomeValue.text = "$newExpenseAmount"
+            binding.tvTotalExpenseValue.text = "$newExpenseAmount"
         }
     }
 

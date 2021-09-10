@@ -1,5 +1,6 @@
 package com.patilapps.walletmanager.utils
 
+import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -9,17 +10,33 @@ fun getCurrentDate(): String {
     return dateFormat.format(date)
 }
 
-fun formatDate(date: Date): String{
+fun formatDate(date: Date): String {
     val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
     return dateFormat.format(date)
 }
 
-fun formatDateWithYear(date: Date): String{
+fun formatStringDate(dateString: String): String {
+    val formatter = SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.getDefault())
+    val date = formatter.parse(dateString)
+
+    Log.d("DATE", dateString)
+
+    date?.let {
+        Log.d("DATE", date.toString())
+
+        val newDateFormatter = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
+        val formatedDate = newDateFormatter.format(date)
+        return formatedDate
+    }
+    return ""
+}
+
+fun formatDateWithYear(date: Date): String {
     val dateFormat = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
     return dateFormat.format(date)
 }
 
-fun formatSelectedDate(date: Date): String{
+fun formatSelectedDate(date: Date): String {
     val dateFormat = SimpleDateFormat("dd/MMM/yyyy", Locale.getDefault())
     return dateFormat.format(date)
 }

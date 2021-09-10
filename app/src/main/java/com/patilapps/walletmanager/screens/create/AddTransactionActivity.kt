@@ -159,7 +159,7 @@ class AddTransactionActivity : AppCompatActivity(),
             val type = transactionType
             val createdDate = Date()
 
-            if (validateForm(amount, date)) {
+            if (validateForm(title, amount, date)) {
                 if (transactionType == "expense") {
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.buttonAddAmount.isEnabled = false
@@ -203,8 +203,12 @@ class AddTransactionActivity : AppCompatActivity(),
         }
     }
 
-    private fun validateForm(amount: String, date: Date): Boolean {
+    private fun validateForm(title: String, amount: String, date: Date): Boolean {
         return when {
+            title.isEmpty() -> {
+                Snackbar.make(binding.root, "Please enter title", Snackbar.LENGTH_SHORT).show()
+                false
+            }
             amount.isEmpty() -> {
                 Snackbar.make(binding.root, "Please enter amount", Snackbar.LENGTH_SHORT).show()
                 false

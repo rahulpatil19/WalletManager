@@ -71,27 +71,15 @@
         android:id="@+id/monthDataFragment"
         android:name="com.patilapps.walletmanager.screens.monthlydata.MonthDataFragment"
         android:label="MonthDataFragment" >
-        <argument
-            android:name="month"
-            app:argType="string" />
-        <argument
-            android:name="year"
-            app:argType="integer" />
-        <argument
-            android:name="income"
-            app:argType="long" />
-        <argument
-            android:name="expense"
-            app:argType="long" />
-        <argument
-            android:name="totalAmount"
-            app:argType="long" />
-        <argument
-            android:name="totalTransaction"
-            app:argType="integer" />
         <action
             android:id="@+id/action_monthDataFragment_to_updateTransactionActivity"
             app:destination="@id/updateTransactionActivity" />
+        <argument
+            android:name="statistic"
+            app:argType="com.patilapps.walletmanager.domain.Statistics" />
+        <argument
+            android:name="year"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

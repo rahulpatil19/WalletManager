@@ -113,7 +113,7 @@ class UpdateTransactionActivity : AppCompatActivity(),
             val date = selectedDate
             val type = transactionType
 
-            if (validateForm(amount, date)) {
+            if (validateForm(title, amount, date)) {
                 if (transactionType == "expense") {
                     binding.progressCircular.visibility = View.VISIBLE
                     binding.buttonSubmit.isEnabled = false
@@ -199,8 +199,12 @@ class UpdateTransactionActivity : AppCompatActivity(),
     }
 
 
-    private fun validateForm(amount: String, date: Date): Boolean {
+    private fun validateForm(title: String, amount: String, date: Date): Boolean {
         return when {
+            title.isEmpty() -> {
+                Snackbar.make(binding.root, "Please enter title", Snackbar.LENGTH_SHORT).show()
+                false
+            }
             amount.isEmpty() -> {
                 Snackbar.make(binding.root, "Please enter amount", Snackbar.LENGTH_SHORT).show()
                 false
@@ -230,10 +234,9 @@ class UpdateTransactionActivity : AppCompatActivity(),
         selectedYear = calendar.get(Calendar.YEAR)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         val sDay: String
-        if(day < 10){
+        if (day < 10) {
             sDay = "0$day"
-        }
-        else{
+        } else {
             sDay = "$day"
         }
 
@@ -241,7 +244,7 @@ class UpdateTransactionActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == android.R.id.home){
+        if (item.itemId == android.R.id.home) {
             super.onBackPressed()
             return true
         }
