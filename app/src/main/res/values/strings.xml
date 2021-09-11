@@ -78,6 +78,7 @@
     <string name="all_transaction_cleard">All Cleared</string>
     <string name="select_transaction_type">Select Transaction Type</string>
     <string name="getLastModifiedDate">Last Modified - %1$s</string>
+    <string name="hint_search">Search Title, Category</string>
 
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->

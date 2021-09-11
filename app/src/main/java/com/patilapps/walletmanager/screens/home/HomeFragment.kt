@@ -88,6 +88,10 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.buttonSearch.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
         binding.tvRecentTransactionsSeeAll.setOnClickListener {
             //  val action = Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_allTransactionFragment)
             findNavController().navigate(R.id.action_homeFragment_to_allTransactionFragment)

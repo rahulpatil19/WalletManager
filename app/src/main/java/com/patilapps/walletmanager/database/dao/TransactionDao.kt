@@ -1,5 +1,6 @@
 package com.patilapps.walletmanager.database.dao
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.*
 import com.patilapps.walletmanager.database.entities.DbTransaction
@@ -39,4 +40,7 @@ interface TransactionDao {
 
     @Query("DELETE FROM table_all_transaction")
     suspend fun deleteAllTransactions()
+
+    @Query("SELECT * FROM table_all_transaction WHERE title LIKE '%' || :keyword || '%' OR category LIKE '%' || :keyword || '%'")
+    fun getTransactionByKeyword(keyword: String): Flow<List<DbTransaction>>
 }

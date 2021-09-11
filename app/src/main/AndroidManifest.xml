@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WalletManager">
-
         <activity
-            android:name="com.patilapps.walletmanager.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +19,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.patilapps.walletmanager.screens.update.UpdateTransactionActivity"
+            android:name=".screens.update.UpdateTransactionActivity"
             android:exported="true" />
-        <activity android:name="com.patilapps.walletmanager.screens.create.AddTransactionActivity" />
-        <activity android:name="com.patilapps.walletmanager.MainActivity" />
+        <activity android:name=".screens.create.AddTransactionActivity" />
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="adjustNothing"/>
 
         <meta-data
             android:name="preloaded_fonts"

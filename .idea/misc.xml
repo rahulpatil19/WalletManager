@@ -14,6 +14,7 @@
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_add_transaction.xml" value="0.2" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_login.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_search.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_splash.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/activity_update_transaction.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/bottom_sheet_category.xml" value="0.17864583333333334" />
@@ -25,12 +26,15 @@
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_category.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_month_data.xml" value="0.22" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_search.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_about.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_currency.xml" value="0.15" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_sheet_wallet_filter.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_statistic.xml" value="0.16" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/fragment_wallet.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/layout_empty_home.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/layout_empty_search.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/layout_no_transaction.xml" value="0.25" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_all_transaction.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_category.xml" value="0.17864583333333334" />
@@ -39,6 +43,7 @@
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_month.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_month_header.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_recently_added.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_search.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/layout/list_item_statistics.xml" value="0.25" />
         <entry key="..\:/Users/SCEA/AndroidStudioProjects/WalletManager/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.18796296296296297" />
       </map>

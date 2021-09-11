@@ -1,13 +1,16 @@
 package com.patilapps.walletmanager.utils
 
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.patilapps.walletmanager.R
+import com.patilapps.walletmanager.domain.Transaction
+import com.patilapps.walletmanager.screens.search.SearchAdapter
+import com.patilapps.walletmanager.screens.search.SearchResult
 import java.util.*
 
 // Transaction List Bindings
@@ -71,3 +74,22 @@ fun ImageView.setCategoryIcon(iconId: Int) {
 }
 
 
+// Search Bindings
+
+@BindingAdapter("android:setEmptyLayoutVisibility")
+fun LinearLayout.setEmptyLayoutVisibility(result: SearchResult){
+    visibility = when(result){
+        is SearchResult.Loading -> View.GONE
+        is SearchResult.Success -> View.GONE
+        is SearchResult.Error -> View.VISIBLE
+    }
+}
+
+@BindingAdapter("android:setSearchProgress")
+fun ProgressBar.setProgressVisibility(result: SearchResult){
+    visibility = when(result){
+        is SearchResult.Loading -> View.VISIBLE
+        is SearchResult.Success -> View.GONE
+        is SearchResult.Error -> View.GONE
+    }
+}

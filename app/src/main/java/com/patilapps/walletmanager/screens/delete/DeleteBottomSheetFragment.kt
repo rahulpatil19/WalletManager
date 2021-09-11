@@ -59,7 +59,7 @@ class DeleteBottomSheetFragment : BottomSheetDialogFragment() {
             val dbTransaction = transaction?.asDbTransaction()
             val deleteClickListener = parentFragment as DeleteClickListener
             deleteClickListener.onTransactionDelete(dbTransaction!!)
-            dbTransaction?.let { deleteTransactionViewModel.deleteTransaction(it) }
+            dbTransaction.let { deleteTransactionViewModel.deleteTransaction(it) }
         }
 
         binding.buttonCancel.setOnClickListener {
@@ -68,7 +68,6 @@ class DeleteBottomSheetFragment : BottomSheetDialogFragment() {
 
         deleteTransactionViewModel.deleteTransaction.observe(this.viewLifecycleOwner, { isDeleted ->
             if (isDeleted) {
-                Toast.makeText(requireContext(), "Transaction deleted", Toast.LENGTH_SHORT).show()
                 dismiss()
             }
         })

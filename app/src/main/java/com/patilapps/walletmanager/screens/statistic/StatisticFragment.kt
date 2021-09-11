@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
@@ -69,7 +68,7 @@ class StatisticFragment : Fragment() {
 
         statisticViewModel.entryList.observe(viewLifecycleOwner, {
             it?.let {
-                if (it.size > 0) {
+                if (it.isNotEmpty()) {
                     val colors: ArrayList<Int> = ArrayList()
                     colors.add(ContextCompat.getColor(requireContext(), R.color.primary))
                     colors.add(ContextCompat.getColor(requireContext(), R.color.secondary))
