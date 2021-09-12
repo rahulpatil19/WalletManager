@@ -33,12 +33,6 @@ class TransactionFragment : Fragment() {
 
     private lateinit var transactionViewModel: AllTransactionViewModel
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

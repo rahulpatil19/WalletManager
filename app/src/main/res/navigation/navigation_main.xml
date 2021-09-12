@@ -51,9 +51,8 @@
     </dialog>
     <fragment
         android:id="@+id/allTransactionFragment"
-        tools:layout="@layout/fragment_all_transaction"
         android:name="com.patilapps.walletmanager.screens.transactions.TransactionFragment"
-        android:label="AllTransactionFragment" >
+        android:label="AllTransactionFragment">
         <action
             android:id="@+id/action_allTransactionFragment_to_monthDataFragment"
             app:destination="@id/monthDataFragment" />

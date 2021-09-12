@@ -23,7 +23,6 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                app:navigationIcon="@drawable/ic_arrow_carrot_left"
                 android:layout_height="wrap_content"
                 app:title="@string/title_all_transactions" />
 
