@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.patilapps.walletmanager.R
-import com.patilapps.walletmanager.database.WalletDatabase
 import com.patilapps.walletmanager.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -63,7 +61,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun rateUs() {
-        val playStoreLink = "https://play.google.com/store/apps/details?=com.walletmanager.app"
+        val playStoreLink = "market://details?id=com.patilapps.walletmanager"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(playStoreLink)
         startActivity(intent)

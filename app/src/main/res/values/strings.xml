@@ -42,7 +42,7 @@
     <!-- Settings text -->
     <string name="text_about">About</string>
     <string name="text_privacy_policy">Privacy Policy</string>
-    <string name="text_rate_us">Rate us</string>
+    <string name="text_rate_us">Rate on Play Store</string>
     <string name="text_change_currency">Change currency</string>
     <string name="text_language">Language</string>
     <string name="title_select_currency">Select Currency</string>
@@ -79,6 +79,7 @@
     <string name="select_transaction_type">Select Transaction Type</string>
     <string name="getLastModifiedDate">Last Modified - %1$s</string>
     <string name="hint_search">Search Title, Category</string>
+    <string name="button_save">Save</string>
 
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->

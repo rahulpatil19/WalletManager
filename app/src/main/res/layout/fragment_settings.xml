@@ -137,6 +137,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:padding="16dp"
                     android:id="@+id/layout_settings_privacy"
                     android:gravity="center_vertical"

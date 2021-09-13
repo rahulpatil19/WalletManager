@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import com.patilapps.walletmanager.R
@@ -25,7 +26,7 @@ class SelectDateBottomSheetFragment : BottomSheetDialogFragment() {
         val cancelBtn = view.findViewById<MaterialButton>(R.id.button_cancel_date)
 
         selectDateBtn.setOnClickListener {
-            val dateClickListener = activity as DateClickListener
+            val dateClickListener = parentFragment as DateClickListener
 
             val calendar = Calendar.getInstance(TimeZone.getDefault())
             calendar.set(Calendar.DAY_OF_MONTH, datePicker.dayOfMonth)

@@ -18,10 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".screens.update.UpdateTransactionActivity"
-            android:exported="true" />
-        <activity android:name=".screens.create.AddTransactionActivity" />
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="adjustNothing"/>
 

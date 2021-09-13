@@ -23,7 +23,7 @@ class DeleteAllSheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         binding = BottomSheetDeleteAllBinding.inflate(inflater, container, false)
 
         walletDatabase = WalletDatabase.getInstance(requireContext())

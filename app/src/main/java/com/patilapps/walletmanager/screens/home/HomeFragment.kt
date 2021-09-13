@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
 
         val recentlyAddedAdapter = RecentlyAddedAdapter(currency) {
             val homeFragmentDirections =
-                HomeFragmentDirections.actionHomeFragmentToUpdateTransactionActivity(it)
+                HomeFragmentDirections.actionHomeFragmentToUpdateTransactionFragment(it)
             findNavController().navigate(homeFragmentDirections)
         }
 

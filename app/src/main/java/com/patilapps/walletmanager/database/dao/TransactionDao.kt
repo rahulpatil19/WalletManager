@@ -43,4 +43,5 @@ interface TransactionDao {
 
     @Query("SELECT * FROM table_all_transaction WHERE title LIKE '%' || :keyword || '%' OR category LIKE '%' || :keyword || '%'")
     fun getTransactionByKeyword(keyword: String): Flow<List<DbTransaction>>
+
 }

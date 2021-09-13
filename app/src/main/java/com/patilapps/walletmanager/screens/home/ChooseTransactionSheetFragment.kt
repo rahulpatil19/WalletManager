@@ -19,12 +19,12 @@ class ChooseTransactionSheetFragment: BottomSheetDialogFragment() {
 
         tvIncome.setOnClickListener { v->
             findNavController().navigate(ChooseTransactionSheetFragmentDirections.
-            actionChooseTransactionSheetFragmentToTransactionActivity("income"))
+            actionChooseTransactionSheetFragmentToCreateFragment("income"))
         }
 
         tvExpense.setOnClickListener { v->
             findNavController().navigate(ChooseTransactionSheetFragmentDirections
-                .actionChooseTransactionSheetFragmentToTransactionActivity("expense"))
+                .actionChooseTransactionSheetFragmentToCreateFragment("expense"))
         }
 
         return view

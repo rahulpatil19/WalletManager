@@ -9,6 +9,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.adapters.ChooseCategoryAdapter
 import com.patilapps.walletmanager.domain.Category
+import com.patilapps.walletmanager.screens.update.UpdateTransactionFragment
 import com.patilapps.walletmanager.utils.CategoryUtils
 
 class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
@@ -31,7 +32,7 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.list_category)
 
         categoryAdapter = ChooseCategoryAdapter { category ->
-            val cateGoryClickListener = activity as CateGoryClickListener
+            val cateGoryClickListener = parentFragment as CateGoryClickListener
             cateGoryClickListener.onCategoryClick(category)
             dismiss()
         }
@@ -41,7 +42,7 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
         if (transactionType.equals("income")) {
             categoryAdapter.categories = CategoryUtils.incomeCategories
         } else if (transactionType.equals("expense")) {
-            categoryAdapter.categories = CategoryUtils.expenseCategories
+            categoryAdapter.categories = CategoryUtils.expenseCategories.sortedBy { it.name }
         }
 
         return view
@@ -51,14 +52,14 @@ class CategoryBottomSheetFragment : BottomSheetDialogFragment() {
         fun onCategoryClick(category: Category)
     }
 
-  /*  override fun onAttachFragment(childFragment: Fragment) {
-        try {
-            cateGoryClickListener = context as CateGoryClickListener
-        }
-        catch (e: ClassCastException){
-            throw ClassCastException("Need to implement bottom sheet interface")
-        }
-    }*/
+    /*  override fun onAttachFragment(childFragment: Fragment) {
+          try {
+              cateGoryClickListener = context as CateGoryClickListener
+          }
+          catch (e: ClassCastException){
+              throw ClassCastException("Need to implement bottom sheet interface")
+          }
+      }*/
 
 
     companion object {

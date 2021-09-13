@@ -59,7 +59,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener, DeleteBottomS
         searchAdapter = SearchAdapter(currency) { transaction, action ->
             if (action == "edit") {
                 val navDirections =
-                    SearchFragmentDirections.actionSearchFragmentToUpdateTransactionActivity(
+                    SearchFragmentDirections.actionSearchFragmentToUpdateTransactionFragment(
                         transaction)
                 findNavController().navigate(navDirections)
             } else if (action == "delete") {

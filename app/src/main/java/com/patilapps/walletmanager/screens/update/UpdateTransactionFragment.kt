@@ -1,39 +1,41 @@
 package com.patilapps.walletmanager.screens.update
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.navArgs
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.database.WalletDatabase
 import com.patilapps.walletmanager.database.entities.DbTransaction
 import com.patilapps.walletmanager.database.entities.DbYear
-import com.patilapps.walletmanager.databinding.ActivityUpdateTransactionBinding
+import com.patilapps.walletmanager.databinding.FragmentUpdateTransactionBinding
 import com.patilapps.walletmanager.domain.Category
 import com.patilapps.walletmanager.domain.Transaction
-import com.patilapps.walletmanager.screens.create.*
+import com.patilapps.walletmanager.screens.create.CategoryBottomSheetFragment
+import com.patilapps.walletmanager.screens.create.SelectDateBottomSheetFragment
+import com.patilapps.walletmanager.utils.WalletPreference
 import com.patilapps.walletmanager.utils.formatSelectedDate
 import com.patilapps.walletmanager.utils.getMonthString
 import java.util.*
 
-class UpdateTransactionActivity : AppCompatActivity(),
-    CategoryBottomSheetFragment.CateGoryClickListener,
+class UpdateTransactionFragment : Fragment(), CategoryBottomSheetFragment.CateGoryClickListener,
     SelectDateBottomSheetFragment.DateClickListener {
 
-    private lateinit var binding: ActivityUpdateTransactionBinding
+    private lateinit var binding: FragmentUpdateTransactionBinding
 
     private lateinit var updateIncomeViewModel: UpdateIncomeViewModel
 
     private lateinit var updateExpenseViewModel: UpdateExpenseViewModel
 
     private lateinit var walletDatabase: WalletDatabase
-
 
     private var transactionId: Int = 0
     private lateinit var transactionCategory: Category
@@ -43,21 +45,36 @@ class UpdateTransactionActivity : AppCompatActivity(),
     private var selectedYear: Int = 2021
     private lateinit var createdDate: Date
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_update_transaction)
+    private lateinit var navigatedFrom: String
 
-        setSupportActionBar(binding.toolbar)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
 
-        walletDatabase = WalletDatabase.getInstance(this)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+
+        binding = FragmentUpdateTransactionBinding.inflate(inflater, container, false)
+
+        walletDatabase = WalletDatabase.getInstance(requireContext())
 
         // Transaction to edit passed as safe args
-        val args: UpdateTransactionActivityArgs by navArgs()
+        val args: UpdateTransactionFragmentArgs by navArgs()
         val transaction = args.transaction
+
+        navigatedFrom = args.navigatedFrom
 
         // initialize transaction fields and update UI
         populateTransactionData(transaction)
+        return binding.root
     }
+
 
     fun populateTransactionData(transaction: Transaction) {
         transactionId = transaction.id
@@ -70,15 +87,23 @@ class UpdateTransactionActivity : AppCompatActivity(),
         transactionCategory =
             Category(transaction.category, transaction.categoryIcon, transaction.categoryColor)
 
+        val currencySymbol =
+            WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_SYMBOL)
+        val currencyCode =
+            WalletPreference.getStringPreference(requireContext(), WalletPreference.CURRENCY_CODE)
+
+        binding.inputLayoutAmount.prefixText = currencySymbol
+        binding.inputLayoutAmount.suffixText = currencyCode
+
         binding.tvCategoryUpdate.text = transaction.category
         binding.etAmount.setText(transaction.amount.toString())
         binding.etTitle.setText(transaction.title)
         binding.tvDate.setText(formatSelectedDate(transaction.date))
         binding.ivCategoryUpdate.setImageDrawable(ResourcesCompat.getDrawable(resources,
-            transaction.categoryIcon, theme))
-        binding.ivCategoryUpdate.drawable.setTint(ResourcesCompat.getColor(resources,
-            transaction.categoryColor,
-            theme))
+            transaction.categoryIcon, resources.newTheme()))
+
+        binding.layoutCategoryUpdate.background.setTint(ContextCompat.getColor(requireContext(),
+            transactionCategory.colorId))
 
         setupClickListeners()
 
@@ -95,14 +120,14 @@ class UpdateTransactionActivity : AppCompatActivity(),
         binding.layoutSelectCategory.setOnClickListener {
             val categoryBottomSheetFragment =
                 CategoryBottomSheetFragment.newInstance(transactionType)
-            supportFragmentManager.let {
+            childFragmentManager.let {
                 categoryBottomSheetFragment.show(it, "category")
             }
         }
 
         binding.rlChooseDate.setOnClickListener {
             val selectDateBottomSheetFragment = SelectDateBottomSheetFragment()
-            supportFragmentManager.let {
+            childFragmentManager.let {
                 selectDateBottomSheetFragment.show(it, "date")
             }
         }
@@ -162,7 +187,7 @@ class UpdateTransactionActivity : AppCompatActivity(),
         binding.toolbar.title = resources.getString(R.string.title_update_expense)
 
         val updateExpenseViewModelFactory =
-            UpdateExpenseViewModelFactory(application,
+            UpdateExpenseViewModelFactory(requireActivity().application,
                 walletDatabase.transactionDao,
                 walletDatabase.yearDao
             )
@@ -171,29 +196,38 @@ class UpdateTransactionActivity : AppCompatActivity(),
             UpdateExpenseViewModel::class.java
         )
 
-        updateExpenseViewModel.updateTransaction.observe(this, { addTransaction ->
-            if (addTransaction) {
-                Toast.makeText(this, "Expense Updated", Toast.LENGTH_SHORT).show()
-                onBackPressed()
-            }
-        })
+        updateExpenseViewModel.updateTransaction.observe(this.viewLifecycleOwner,
+            { updateTransaction ->
+                if (updateTransaction) {
+                    if (navigatedFrom == "month") {
+                        findNavController().navigate(R.id.action_updateTransactionFragment_to_statisticFragment)
+                    } else {
+                        findNavController().navigate(R.id.action_updateTransactionFragment_to_homeFragment)
+                    }
+                }
+            })
     }
 
     private fun initIncomeData() {
         binding.toolbar.title = resources.getString(R.string.title_update_income)
 
-        val updateIncomeViewModelFactory = UpdateIncomeViewModelFactory(application,
-            walletDatabase.transactionDao,
-            walletDatabase.yearDao)
+        val updateIncomeViewModelFactory =
+            UpdateIncomeViewModelFactory(requireActivity().application,
+                walletDatabase.transactionDao,
+                walletDatabase.yearDao)
 
         updateIncomeViewModel = ViewModelProvider(this, updateIncomeViewModelFactory).get(
             UpdateIncomeViewModel::class.java
         )
 
-        updateIncomeViewModel.updateTransaction.observe(this, { addTransaction ->
+        updateIncomeViewModel.updateTransaction.observe(this.viewLifecycleOwner, { addTransaction ->
             if (addTransaction) {
-                Toast.makeText(this, "Income Updated", Toast.LENGTH_SHORT).show()
-                onBackPressed()
+                Toast.makeText(requireContext(), "Income Updated", Toast.LENGTH_SHORT).show()
+                if (navigatedFrom == "month") {
+                    findNavController().navigate(R.id.action_updateTransactionFragment_to_statisticFragment)
+                } else {
+                    findNavController().navigate(R.id.action_updateTransactionFragment_to_homeFragment)
+                }
             }
         })
     }
@@ -222,10 +256,11 @@ class UpdateTransactionActivity : AppCompatActivity(),
     override fun onCategoryClick(category: Category) {
         transactionCategory = category
         binding.tvCategoryUpdate.text = category.name
+        binding.layoutCategoryUpdate.background.setTint(ContextCompat.getColor(requireContext(),
+            transactionCategory.colorId))
         binding.ivCategoryUpdate.setImageDrawable(ResourcesCompat.getDrawable(resources,
             category.iconId,
             resources.newTheme()))
-        //  Toast.makeText(this, "Category selected is ${category.name}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDateSelected(calendar: Calendar) {
@@ -243,11 +278,4 @@ class UpdateTransactionActivity : AppCompatActivity(),
         binding.tvDate.text = getString(R.string.selected_date, sDay, selectedMonth, selectedYear)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            super.onBackPressed()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }

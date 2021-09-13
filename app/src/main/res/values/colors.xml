@@ -25,6 +25,8 @@
     <color name="blue_dark">#272535</color>
     <color name="gray_dark">#73717D</color>
 
+    <color name="gray_e">#c0c0c0</color>
+
     <color name="green_1">#1DAC4C</color>
     <color name="green_2">#249A4B</color>
     <color name="green_3">#2A8F4C</color>

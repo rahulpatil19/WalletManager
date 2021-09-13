@@ -1,6 +1,7 @@
 package com.patilapps.walletmanager.screens.monthlydata
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,9 @@ import com.patilapps.walletmanager.database.WalletDatabase
 import com.patilapps.walletmanager.database.entities.DbTransaction
 import com.patilapps.walletmanager.database.entities.DbYear
 import com.patilapps.walletmanager.databinding.FragmentMonthDataBinding
+import com.patilapps.walletmanager.domain.asDbTransaction
 import com.patilapps.walletmanager.screens.delete.DeleteBottomSheetFragment
+import com.patilapps.walletmanager.utils.TransactionBroadCast
 import com.patilapps.walletmanager.utils.WalletPreference
 
 class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListener {
@@ -23,11 +26,18 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
 
     private lateinit var viewModel: MonthDataViewModel
 
+    private var totalTransactions: Int = 0
+
+    private lateinit var selectedTransactionForUpdate: DbTransaction
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("MonthFragment State:", "onViewCreated()")
+
         binding.toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +45,8 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentMonthDataBinding.inflate(inflater, container, false)
+
+        Log.d("MonthFragment State:", "onCreateView()")
 
         setHasOptionsMenu(true)
 
@@ -48,7 +60,7 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         val month = statistic.month
         val year = navArgs.year
         val totalAmount = statistic.totalAmount
-        val totalTransactions = statistic.totalTransactions
+        totalTransactions = statistic.totalTransactions
         val income = statistic.totalIncome
         val expense = statistic.totalExpense
 
@@ -58,6 +70,9 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
 
         val viewModelFactory = MonthDataViewModelFactory(month.take(3),
             year,
+            totalAmount,
+            income,
+            expense,
             walletDatabase.transactionDao,
             activity!!.application)
 
@@ -66,9 +81,10 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
 
         val monthDataAdapter = MonthDataAdapter(currency) { transaction, action ->
             if (action == "edit") {
+                viewModel.selectedTransaction.value = transaction.asDbTransaction()
                 val navDirections =
-                    MonthDataFragmentDirections.actionMonthDataFragmentToUpdateTransactionActivity(
-                        transaction)
+                    MonthDataFragmentDirections.actionMonthDataFragmentToUpdateTransactionFragment(
+                        transaction, "month")
                 findNavController().navigate(navDirections)
             } else if (action == "delete") {
                 val fragmentManager = childFragmentManager
@@ -76,6 +92,12 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
                 fragment.show(fragmentManager, "delete")
             }
         }
+/*
+
+        viewModel.selectedTransaction.observe(this.viewLifecycleOwner, {
+            viewModel.updateAmountValues(it)
+        })
+*/
 
         binding.listMonth.adapter = monthDataAdapter
 
@@ -83,8 +105,21 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
             monthDataAdapter.submitList(it)
         })
 
+        viewModel.totalAmountLiveData.observe(this.viewLifecycleOwner, {
+            binding.tvTotalAmountValue.text = it.toString()
+        })
+
+        viewModel.incomeAmountLiveData.observe(this.viewLifecycleOwner, {
+            binding.tvTotalIncomeValue.text = it.toString()
+        })
+
+        viewModel.expenseAmountLiveData.observe(this.viewLifecycleOwner, {
+            binding.tvTotalExpenseValue.text = it.toString()
+        })
+
         return binding.root
     }
+
 
     private fun initializeData(
         totalAmount: Long,
@@ -93,11 +128,8 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         totalTransactions: Int,
         currency: String,
         year: Int,
-        month: String
+        month: String,
     ) {
-        binding.tvTotalAmountValue.text = totalAmount.toString()
-        binding.tvTotalIncomeValue.text = income.toString()
-        binding.tvTotalExpenseValue.text = expense.toString()
 
         binding.tvMonthAndYear.text = "$month, $year"
         binding.tvCurrency.text = currency
@@ -115,6 +147,13 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         val type = transaction.type
         val amount = transaction.amount
 
+        totalTransactions = totalTransactions.minus(1)
+        if (totalTransactions == 1) {
+            binding.tvMonthTotalTransaction.text = "$totalTransactions transaction"
+        } else {
+            binding.tvMonthTotalTransaction.text = "$totalTransactions transactions"
+        }
+
         Toast.makeText(requireContext(), "${transaction.title} deleted", Toast.LENGTH_SHORT).show()
 
         val previousTotalAmount = binding.tvTotalAmountValue.text.toString().toLong()
@@ -122,12 +161,11 @@ class MonthDataFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListe
         val newTotalAmount = previousTotalAmount.minus(amount)
         binding.tvTotalAmountValue.text = newTotalAmount.toString()
 
-        if (type == "income"){
+        if (type == "income") {
             val previousIncomeAmount = binding.tvTotalIncomeValue.text.toString().toLong()
             val newIncomeAmount = previousIncomeAmount.minus(amount)
             binding.tvTotalIncomeValue.text = "$newIncomeAmount"
-        }
-        else if(type == "expense"){
+        } else if (type == "expense") {
             val previousExpenseAmount = binding.tvTotalExpenseValue.text.toString().toLong()
             val newExpenseAmount = previousExpenseAmount.minus(amount)
             binding.tvTotalExpenseValue.text = "$newExpenseAmount"

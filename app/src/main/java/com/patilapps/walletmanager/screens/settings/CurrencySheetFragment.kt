@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.button.MaterialButton
 import com.mynameismidori.currencypicker.ExtendedCurrency
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.databinding.ListItemCurrencyBinding
@@ -37,12 +38,17 @@ class CurrencySheetFragment : BottomSheetDialogFragment() {
         recyclerView.adapter = adapter
         adapter.currencyList = currencyList
 
+        val closeButton = view.findViewById<MaterialButton>(R.id.button_currency_close)
+        closeButton.setOnClickListener {
+            dismiss()
+        }
+
         return view
     }
 
     class CurrencyAdapter(
         val context: Context,
-        val selectedCurrency: (String, String, String, Int) -> Unit,
+        private val selectedCurrency: (String, String, String, Int) -> Unit,
     ) :
         RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>() {
         var currencyList = listOf<ExtendedCurrency>()

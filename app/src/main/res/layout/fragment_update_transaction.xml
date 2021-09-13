@@ -54,7 +54,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="@string/title_category"
+                        android:text="@string/title_select_category"
                         android:fontFamily="@font/nunito_semibold"
                         android:textColor="@color/primary"
                         android:textSize="18sp" />
@@ -71,6 +71,7 @@
                             android:id="@+id/iv_category_update"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            app:tint="@color/white"
                             tools:src="@drawable/ic_apple_fruits" />
 
                     </RelativeLayout>
@@ -102,13 +103,14 @@
                         android:id="@+id/et_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="textCapWords" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
+                    android:id="@+id/input_layout_amount"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:hint="@string/hint_amount"
@@ -119,6 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
+                        android:maxLength="7"
                         android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -195,4 +198,5 @@
             android:visibility="gone" />
 
     </RelativeLayout>
+
 </layout>

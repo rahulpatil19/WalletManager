@@ -27,7 +27,7 @@
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Press on CREATE to add a new transaction" />
+        android:text="Click on CREATE to add a new transaction" />
 
 
 </LinearLayout>

@@ -23,7 +23,7 @@
             android:id="@+id/rl_category_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_category_create"
+            android:background="@drawable/bg_category_select"
             android:padding="12dp">
 
             <ImageView

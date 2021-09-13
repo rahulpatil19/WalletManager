@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -21,13 +22,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.databinding.FragmentAllTransactionBinding
 import com.patilapps.walletmanager.database.WalletDatabase
+import com.patilapps.walletmanager.database.entities.DbTransaction
 import com.patilapps.walletmanager.database.entities.asDomainTransaction
 import com.patilapps.walletmanager.screens.delete.DeleteBottomSheetFragment
 import com.patilapps.walletmanager.utils.WalletPreference
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class TransactionFragment : Fragment() {
+class TransactionFragment : Fragment(), DeleteBottomSheetFragment.DeleteClickListener {
 
     private lateinit var binding: FragmentAllTransactionBinding
 
@@ -62,7 +64,7 @@ class TransactionFragment : Fragment() {
             AllTransactionAdapter(currency) { dbTransaction, action ->
                 if (action == "edit") {
                     val transactionFragmentDirections =
-                        TransactionFragmentDirections.actionAllTransactionFragmentToUpdateTransactionActivity(
+                        TransactionFragmentDirections.actionAllTransactionFragmentToUpdateTransactionFragment(
                             dbTransaction.asDomainTransaction())
                     findNavController().navigate(transactionFragmentDirections)
                 } else if (action == "delete") {
@@ -85,6 +87,10 @@ class TransactionFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onTransactionDelete(transaction: DbTransaction) {
+        Toast.makeText(requireContext(), "${transaction.title} deleted", Toast.LENGTH_SHORT).show()
     }
 
 /*
