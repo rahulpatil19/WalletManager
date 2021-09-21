@@ -17,7 +17,7 @@ interface TransactionDao {
     fun getTenRecentTransactions(): Flow<List<DbTransaction>>
 
     // default query to get all the transaction by page
-    @Query("SELECT * FROM table_all_transaction ORDER BY date")
+    @Query("SELECT * FROM table_all_transaction ORDER BY date DESC")
     fun getTransactionPageSortedByDate(): PagingSource<Int, DbTransaction>
 
     // Used in statistics filter by year
@@ -25,7 +25,7 @@ interface TransactionDao {
     fun getTransactionByYear(year: Int): Flow<List<DbTransaction>>
 
     // Used in wallet filter by month
-    @Query("SELECT * FROM table_all_transaction WHERE month LIKE :month AND year LIKE :year ORDER BY date")
+    @Query("SELECT * FROM table_all_transaction WHERE month LIKE :month AND year LIKE :year ORDER BY date DESC")
     fun getTransactionByMonth(month: String, year: Int): Flow<List<DbTransaction>>
 
     // used in wallet filter category
@@ -38,9 +38,11 @@ interface TransactionDao {
     @Delete
     suspend fun deleteTransaction(dbTransaction: DbTransaction)
 
+    // used in settings to clear all transactions
     @Query("DELETE FROM table_all_transaction")
     suspend fun deleteAllTransactions()
 
+    // Search by title and category
     @Query("SELECT * FROM table_all_transaction WHERE title LIKE '%' || :keyword || '%' OR category LIKE '%' || :keyword || '%'")
     fun getTransactionByKeyword(keyword: String): Flow<List<DbTransaction>>
 

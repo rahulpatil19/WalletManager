@@ -29,7 +29,7 @@
     <string name="title_select_category">Select Category</string>
     <string name="hint_amount">Amount</string>
     <string name="title_history">History</string>
-    <string name="info_version">Version 1.0.0</string>
+    <string name="info_version">Version 1.0.4</string>
     <string name="title_statistic">Statistics</string>
     <string name="title_edit_transaction">Edit Transaction</string>
     <string name="title_edit_expense">Edit Expense</string>
@@ -80,6 +80,9 @@
     <string name="getLastModifiedDate">Last Modified - %1$s</string>
     <string name="hint_search">Search Title, Category</string>
     <string name="button_save">Save</string>
+    <string name="description_year_previous">Previous Year</string>
+    <string name="description_year_next">Next Year</string>
+    <string name="title_more">More</string>
 
 
     <!--  <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>-->

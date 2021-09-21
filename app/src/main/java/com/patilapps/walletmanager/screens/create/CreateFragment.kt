@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.ads.AdRequest
 import com.google.android.material.snackbar.Snackbar
 import com.patilapps.walletmanager.R
 import com.patilapps.walletmanager.database.WalletDatabase
@@ -24,12 +25,17 @@ import com.patilapps.walletmanager.utils.getCurrentDate
 import com.patilapps.walletmanager.utils.getMonthString
 import java.util.*
 
+
 class CreateFragment: Fragment(),  CategoryBottomSheetFragment.CateGoryClickListener,
     SelectDateBottomSheetFragment.DateClickListener  {
 
     private lateinit var transactionType: String
 
     private lateinit var binding: FragmentCreateBinding
+
+    //ca-app-pub-9660112888704846/6491880521
+
+    // test Ad unit id - ca-app-pub-3940256099942544/6300978111
 
     private lateinit var addIncomeViewModel: AddIncomeViewModel
     private lateinit var addIncomeViewModelFactory: AddIncomeViewModelFactory
@@ -58,6 +64,9 @@ class CreateFragment: Fragment(),  CategoryBottomSheetFragment.CateGoryClickList
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentCreateBinding.inflate(inflater, container, false)
+
+        val adRequest: AdRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
 
         walletDatabase = WalletDatabase.getInstance(requireContext())
 

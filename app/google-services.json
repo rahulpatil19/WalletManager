@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "750360191497",
+    "project_id": "wallet-manager-8e5d2",
+    "storage_bucket": "wallet-manager-8e5d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750360191497:android:9ff44f6d7866263b8c0ed8",
+        "android_client_info": {
+          "package_name": "com.patilapps.walletmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750360191497-0ekmqpu0uolsnhobv3rcsklmb6gf3bru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.patilapps.walletmanager",
+            "certificate_hash": "8c1363e44ac32d113f0da1ab5c677ec36177fdd7"
+          }
+        },
+        {
+          "client_id": "750360191497-o4470cjp0d9s5lo2nieo6s95mk2tj0k7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBchC8G3VV0aRIe7h-UedH2NH6by7CYM7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750360191497-o4470cjp0d9s5lo2nieo6s95mk2tj0k7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

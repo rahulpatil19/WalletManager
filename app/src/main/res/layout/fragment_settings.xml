@@ -23,7 +23,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Settings" />
+                app:title="@string/title_more" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -137,7 +137,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:padding="16dp"
                     android:id="@+id/layout_settings_privacy"
                     android:gravity="center_vertical"
@@ -188,13 +187,13 @@
 
 
             <TextView
-                android:padding="16dp"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:text="@string/info_version"
-                android:layout_alignParentBottom="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/info_version" />
 
         </RelativeLayout>
 

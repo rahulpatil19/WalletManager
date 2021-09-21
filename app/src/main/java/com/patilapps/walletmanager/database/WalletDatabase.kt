@@ -8,7 +8,7 @@ import com.patilapps.walletmanager.database.dao.*
 import com.patilapps.walletmanager.database.entities.*
 
 @Database(entities = [DbIncome::class, DbExpense::class, DbTransaction::class, DbYear::class, DbMonth::class],
-    version = 18,
+    version = 1,
     exportSchema = false)
 abstract class WalletDatabase : RoomDatabase() {
     abstract val incomeDao: IncomeDao

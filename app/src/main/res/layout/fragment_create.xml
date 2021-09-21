@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -20,8 +21,8 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                app:navigationIcon="@drawable/ic_arrow_carrot_left"
                 android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_arrow_carrot_left"
                 app:title="@string/title_add_transaction" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -29,7 +30,6 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:layout_above="@id/button_add_amount"
             android:layout_below="@id/appBar">
 
@@ -53,9 +53,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/nunito_semibold"
                         android:gravity="center_vertical"
                         android:text="@string/title_select_category"
-                        android:fontFamily="@font/nunito_semibold"
                         android:textColor="@color/primary"
                         android:textSize="18sp" />
 
@@ -70,22 +70,22 @@
                             android:id="@+id/iv_category_create"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            tools:src="@drawable/ic_apple_fruits"
-                            app:tint="@color/white" />
+                            app:tint="@color/white"
+                            tools:src="@drawable/ic_apple_fruits" />
 
                     </RelativeLayout>
 
                     <TextView
-                        android:layout_marginStart="16dp"
                         android:id="@+id/tv_category_create"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
                         android:gravity="center_vertical"
-                        tools:text="Other"
                         android:textColor="@color/primary_variant"
                         android:textSize="16sp"
-                        app:drawableEndCompat="@drawable/ic_arrow_carrot_right" />
+                        app:drawableEndCompat="@drawable/ic_arrow_carrot_right"
+                        tools:text="Other" />
 
                 </LinearLayout>
 
@@ -107,14 +107,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_amount"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/input_layout_amount"
-                    app:suffixTextColor="@color/primary_variant"
                     android:layout_marginTop="24dp"
                     android:hint="@string/hint_amount"
-                    app:boxBackgroundColor="@color/gray_medium">
+                    app:boxBackgroundColor="@color/gray_medium"
+                    app:suffixTextColor="@color/primary_variant">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_amount"
@@ -172,7 +172,16 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/gray_dark"/>
+                    android:background="@color/gray_dark" />
+
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="48dp"
+                    ads:adSize="LARGE_BANNER"
+                    ads:adUnitId="ca-app-pub-9660112888704846/6491880521" />
 
             </LinearLayout>
 

@@ -42,7 +42,18 @@ class SettingsFragment : Fragment() {
             chooseCountry()
         }
 
+        binding.layoutSettingsPrivacy.setOnClickListener {
+            openPrivacyPolicy()
+        }
+
         return binding.root
+    }
+
+    private fun openPrivacyPolicy(){
+        val url = "https://github.com/rahulpatil19/WalletManagerPrivacy/blob/main/README.md"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
     }
 
     private fun chooseCountry() {
